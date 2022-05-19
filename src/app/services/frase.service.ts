@@ -15,7 +15,7 @@ export class FraseService {
   }
 
   listarFrases(): Observable<any>{
-     return this.http.get(`${this.api}/frases`);
+     return this.http.get(`/api/frases`);
   }
 
   cadastrarFrases(frase: FrasesModel): Observable<any>{

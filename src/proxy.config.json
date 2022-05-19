@@ -1,0 +1,11 @@
+{
+  "/api/*":{
+    "target": "https://app-my-english-wg.herokuapp.com/",
+    "secure": true,
+    "logLevel": "info",
+    "pathRewrite":{
+      "^/api/": ""
+    },
+    "changeOrigin": true
+  }
+}
