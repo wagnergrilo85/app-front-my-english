@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PalavrasModel } from 'src/app/model/palavras.model';
+import { PalavraService } from 'src/app/services/palavra.service';
 
 @Component({
   selector: 'app-listar-palavras',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarPalavrasComponent implements OnInit {
 
-  constructor() { }
+  palavras: PalavrasModel[];
+
+  constructor(private palavrasService: PalavraService) { }
 
   ngOnInit() {
+    this.palavrasService.listarPalavras().subscribe(lista => {
+      this.palavras = lista;
+    });
   }
 
 }

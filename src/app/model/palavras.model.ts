@@ -1,10 +1,10 @@
 export class PalavrasModel{
 
   id: number;
-  palavra_eg?: string;
-  palavra_pt?: string;
+  palavraEg?: string;
+  palavraPt?: string;
   status?: number;
-  data_cadastro?: string;
+  dataCadastro?: string;
   rating?: number;
 
 }

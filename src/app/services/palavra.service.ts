@@ -14,20 +14,21 @@ export class PalavraService {
   constructor(private http: HttpClient) {
   }
 
-  listarPalavra(): Observable<any>{
-     return this.http.get(`${this.api}/palavra`);
+  listarPalavras(): Observable<any>{
+     return this.http.get(`/api/palavras/listar`);
   }
 
   cadastrarPalavra(palavra: PalavrasModel): Observable<any>{
-    return this.http.post(`${this.api}/palavra`, palavra);
+    console.log(palavra);
+    return this.http.post(`/api/palavras/cadastrar`, palavra);
   }
 
   pesquisarPalavraPorId(id: number) : Observable < any > {
-      return this.http.get(`${this.api}/palavra/${id}`);
+      return this.http.get(`/api/palavra/${id}`);
   }
 
   editarPalavra(palavra : PalavrasModel, id: number) : Observable <any> {
-    return this.http.put(`${this.api}/palavra/${id}`, palavra);
+    return this.http.put(`/api/palavra/${id}`, palavra);
   }
 
   deletarPalavra(id : number) : Observable < any > {
@@ -36,6 +37,14 @@ export class PalavraService {
 
   filtrarPorNome(nome: string): Observable<any> {
     return this.http.get(`${this.api}/palavra/filtrar/${nome}`);
+  }
+
+  filtrarPalavraPorIngles(palavraIngles: string): Observable<any> {
+    return this.http.get(`${this.api}/palavra/filtrar/eg/${palavraIngles}`);
+  }
+
+  filtrarPalavraPorPortugues(palavraPortugues: string): Observable<any> {
+    return this.http.get(`${this.api}/palavra/filtrar/pt/${palavraPortugues}`);
   }
 
 }

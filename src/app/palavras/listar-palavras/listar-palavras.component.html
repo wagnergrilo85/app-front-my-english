@@ -1,1 +1,47 @@
-<p>listar-palavras works!</p>
+<div class="container">
+  <br>
+  <div class="row">
+          <div class="col-lg-6">
+                  <h3>Lista de palavras</h3>
+          </div>
+          <div class="col-lg-6">
+                  <a class="btn btn-success float-right" routerLink="/palavras/cadastrar"><i class="fas fa-plus"></i> Novo Cliente</a>
+          </div>
+  </div>
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
+          <div class="col-lg-12">
+                  <br>
+                  <table class="table table-striped tabela">
+                          <thead>
+                                  <tr>
+                                          <th scope="col">ID</th>
+                                          <th scope="col">Palavra inglês</th>
+                                          <th scope="col">Palavra português</th>
+                                          <th scope="col">Data de cadastro</th>
+                                          <th scope="col">Status</th>
+                                          <th scope="col">Ações</th>
+                                  </tr>
+                          </thead>
+                          <tbody>
+                                  <tr *ngFor="let palavra of palavras" >
+                                          <th>{{palavra.id}}</th>
+                                          <td>{{palavra.palavraEg}}</td>
+                                          <td>{{palavra.palavraPt}}</td>
+                                          <td>{{palavra.dataCadastro | date: 'dd/MM/yyyy'}}</td>
+                                          <td>{{palavra.status == 1 ? 'Ativado' : 'Desativado'}}</td>
+                                          <td>
+                                                  <div class="btn-group">
+                                                  <a href="#" class="btn btn-primary btn-sm" [routerLink]="['/palavras/editar/', palavra.id]"><i class="far fa-edit"></i> Editar</a>
+                                                  <a href="#" class="btn btn-danger btn-sm espaco-botoes" [routerLink]="['/palavras/excluir/', palavra.id]"><i class="fas fa-trash"></i>Excluir</a>
+                                                  </div>
+                                          </td>
+                                  </tr>
+                          </tbody>
+
+                  </table>
+          </div>
+  </div>

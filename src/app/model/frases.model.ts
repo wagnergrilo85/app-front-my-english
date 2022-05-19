@@ -1,9 +1,9 @@
 export class FrasesModel{
 
     id: number;
-    frase_eg?: string;
-    frase_pt?: string;
+    fraseEg?: string;
+    frasePt?: string;
     status?: number;
-    data_cadastro?: string;
+    dataCadastro?: string;
     rating?: number;
 }

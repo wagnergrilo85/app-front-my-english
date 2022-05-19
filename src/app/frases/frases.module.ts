@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [ListarFrasesComponent, CadastrarFrasesComponent, ConsultarFrasesComponent, ExcluirFrasesComponent, EditarFrasesComponent],
   imports: [
     CommonModule,
+    FormsModule,
     FrasesRoutingModule,
     RouterModule,
     FormsModule

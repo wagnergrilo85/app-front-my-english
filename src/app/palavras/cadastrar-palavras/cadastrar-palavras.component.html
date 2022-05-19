@@ -1,1 +1,43 @@
-<p>cadastrar-palavras works!</p>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>Cadastro de novas palavras</h3>
+      <br>
+      <div class="alert alert-{{tipoAlerta}}" role="alert" [hidden]="!mensagemAlerta"> {{mensagemAlerta}} </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="palavraEg">Palavra em inglês:</label>
+            <input type="text" class="form-control" id="palavraEg" placeholder="Informe a palavra em ingles..."
+              name="palavraEg" [(ngModel)]="palavraModel.palavraEg">
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="palavraPt">Palavra em português:</label>
+            <input type="text" class="form-control" id="palavraPt" placeholder="Informe a palavra em português..."
+              name="palavraPt" [(ngModel)]="palavraModel.palavraPt">
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="rating">Rating:</label>
+            <select id="rating" class="form-control" name="rating" [(ngModel)]="palavraModel.rating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="status">Status:</label>
+            <select id="status" class="form-control" name="status" [(ngModel)]="palavraModel.status">
+              <option value="1">Ativado</option>
+              <option value="0">Desativado</option>
+            </select>
+          </div>
+        </div>
+      </form>
+      <button type="submit" class="btn btn-primary" (click)="cadastrar()"> <i class="far fa-save"></i> Cadastrar</button>
+      <a class="btn btn-secondary espaco-botoes" routerLink="/palavras/listar"><i class="fas fa-undo"></i> Voltar</a>
+    </div>
+  </div>
+</div>

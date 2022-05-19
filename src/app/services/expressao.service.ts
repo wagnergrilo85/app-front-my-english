@@ -15,27 +15,27 @@ export class ExpressaoService {
   }
 
   listarExpressao(): Observable<any>{
-     return this.http.get(`${this.api}/expressao`);
+     return this.http.get(`/api/expressao/listar`);
   }
 
   cadastrarExpressao(expressao: ExpressoesModel): Observable<any>{
-    return this.http.post(`${this.api}/expressao`, expressao);
+    return this.http.post(`/api/expressao`, expressao);
   }
 
   pesquisarExpressaoPorId(id: number) : Observable < any > {
-      return this.http.get(`${this.api}/expressao/${id}`);
+      return this.http.get(`/api/expressao/${id}`);
   }
 
   editarExpressao(expressao : ExpressoesModel, id: number) : Observable <any> {
-    return this.http.put(`${this.api}/expressao/${id}`, expressao);
+    return this.http.put(`/api/expressao/${id}`, expressao);
   }
 
   deletarExpressao(id : number) : Observable < any > {
-    return this.http.delete(`${this.api}/expressao/${id}`);
+    return this.http.delete(`/api/expressao/${id}`);
   }
 
   filtrarPorNome(nome: string): Observable<any> {
-    return this.http.get(`${this.api}/expressao/filtrar/${nome}`);
+    return this.http.get(`/api/expressao/filtrar/${nome}`);
   }
 
 }

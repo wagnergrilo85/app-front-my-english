@@ -1,10 +1,10 @@
 export class ExpressoesModel{
 
   id: number;
-  expressao_eg?: string;
-  expressao_pt?: string;
+  expressaoEg?: string;
+  expressaoPt?: string;
   status?: number;
-  data_cadastro?: string;
+  dataCadastro?: string;
   rating?: number;
 
 }
