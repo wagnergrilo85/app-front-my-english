@@ -1,0 +1,134 @@
+<br>
+<div class="container">
+        <div class="row">
+                <div class="col-lg-12">
+                        <h3>Editar Cliente</h3>
+                        <br>
+                        <div class="alert alert-danger" role="alert" [hidden]="!mensagemAlerta"> {{mensagemAlerta}}
+                        </div>
+                        <form>
+                                <div class="form-row">
+                                        <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+                                                <label for="nome">Nome:</label>
+                                                <input type="text" class="form-control" id="nome"
+                                                        placeholder="Informe seu nome..." name="nome"
+                                                        [(ngModel)]="cliente.nome">
+                                        </div>
+                                        <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+                                                <label for="tipo">Tipo</label>
+                                                <select id="tipo" class="form-control" name="tipoCliente"
+                                                        (change)="mostrarTipoCliente()"
+                                                        [(ngModel)]="cliente.tipoCliente">
+                                                        <option value="0">Pessoa Física</option>
+                                                        <option value="1">Pessoa Jurídica</option>
+                                                </select>
+                                        </div>
+                                        <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4"
+                                                [hidden]="!mostrarTipoPessoa">
+                                                <label for="cpf">CPF:</label>
+                                                <input type="text" class="form-control" id="cpf" name="cpf"
+                                                        placeholder="Informe seu CPF" [(ngModel)]="cliente.cpf">
+                                        </div>
+
+                                        <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4"
+                                                [hidden]="mostrarTipoPessoa">
+                                                <label for="cnpj">CNPJ:</label>
+                                                <input type="text" class="form-control" id="cnpj" name="cnpj"
+                                                        placeholder="Informe seu CNPJ" [(ngModel)]="cliente.cnpj">
+                                        </div>
+
+                                        <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4"
+                                                [hidden]="!mostrarTipoPessoa">
+                                                <label for="rg">RG:</label>
+                                                <input type="text" class="form-control" id="rg" name="rg"
+                                                        placeholder="Informe seu RG" [(ngModel)]="cliente.rg">
+                                        </div>
+
+                                        <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4"
+                                                [hidden]="mostrarTipoPessoa">
+                                                <label for="ie">IE:</label>
+                                                <input type="text" class="form-control" id="ie" name="ie"
+                                                        placeholder="Informe a IE" [(ngModel)]="cliente.ie">
+                                        </div>
+                                        <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+                                                <label for="ativo">Status:</label>
+                                                <select id="ativo" class="form-control" name="ativo"
+                                                        [(ngModel)]="cliente.ativo">
+                                                        <option value="1">Ativado</option>
+                                                        <option value="0">Desativado</option>
+                                                </select>
+                                        </div>
+
+                                        <div class="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
+                                                <div class="card">
+                                                        <div class="card-header">
+                                                                Telefones
+                                                                <a class="btn btn-primary btn-sm float-right"
+                                                                        (click)="mostrarTelaCadastroTelefone()"> <i
+                                                                                class="bi bi-file-earmark-plus"></i>
+                                                                        Novo
+                                                                        telefone</a>
+                                                        </div>
+
+                                                        <table class="table table-bordered box-lista-telefone"
+                                                                [hidden]="mostrarDivNovoTelefone">
+                                                                <thead>
+                                                                        <tr>
+                                                                                <td>#</td>
+                                                                                <td> Telefone</td>
+                                                                                <td>Ações</td>
+                                                                        </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                        <tr *ngFor="let tel of cliente.telefones">
+                                                                                <td>{{tel.ddd}}</td>
+                                                                                <td>{{tel.telefone}}</td>
+                                                                                <td><a href="#" class="btn btn-danger btn-sm"
+                                                                                                (click)="deletarTelefone(tel)"> <i class="fas fa-trash"></i> Deletar</a>
+                                                                                </td>
+                                                                        </tr>
+                                                                </tbody>
+                                                        </table>
+
+                                                        <div class="box-novo-telefone"
+                                                                [hidden]="!mostrarDivNovoTelefone">
+                                                                <div class="row">
+                                                                        <div class="col-lg-3 col-sm-4 col-md-3">
+                                                                                <input type="text" class="form-control"
+                                                                                        id="ddd" placeholder="ddd"
+                                                                                        name="ddd"
+                                                                                        [(ngModel)]="telefone.ddd">
+
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-sm-6 col-md-6">
+                                                                                <input type="text" class="form-control"
+                                                                                        id="telefone"
+                                                                                        placeholder="xxxx-xxxx"
+                                                                                        name="telefone"
+                                                                                        [(ngModel)]="telefone.telefone">
+
+                                                                        </div>
+                                                                        <div class="col-lg-12 col-sm-12">
+                                                                                <br>
+                                                                                <a class="btn btn-info btn-sm"
+                                                                                        (click)="adicionarNovoTelefone()">Salvar
+                                                                                </a>
+                                                                                <a class="btn btn-danger btn-sm espaco-botoes"
+                                                                                        (click)="ocultarTelaCadastroTelefone()">Cancelar</a>
+                                                                                        <br>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </form>
+                        <button type="submit" class="btn btn-primary" (click)="editarCliente()"> <i
+                                        class="far fa-save"></i> Editar cliente</button>
+                                        <a href="#" class="btn btn-danger espaco-botoes" [routerLink]="['/cliente/excluir/', cliente.id]"><i
+                                                        class="far fa-trash-alt"></i> Excluir</a>
+                        <a class="btn btn-secondary espaco-botoes" routerLink="/cliente"><i class="fas fa-undo"></i>
+                                Voltar</a>
+                </div>
+        </div>
+</div>

@@ -1,0 +1,62 @@
+<br>
+<div class="container">
+        <div class="row">
+                <div class="col-lg-12">
+                        <h3>Excluir Cliente</h3>
+                        <br>
+                        <div class="alert alert-danger" role="alert" [hidden]="!mensagemAlerta"> {{mensagemAlerta}}
+                        </div>
+                        
+                        <table class="table table-bordered">
+                                <thead>
+                                        <tr>
+                                                <td>Coluna</td>
+                                                <td>Dados do cliente</td>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <td>ID</td>
+                                                <td>{{cliente.id}}</td>
+                                        </tr>
+                                        <tr>
+                                                <td>Nome</td>
+                                                <td>{{cliente.nome}}</td>
+                                        </tr>
+                                        <tr>
+                                                <td>Tipo cliente</td>
+                                                <td>{{cliente.tipoCliente == 0 ? 'Pessoa física' : 'Pessoa jurídica'}}</td>
+                                        </tr>
+                                        <tr [hidden]="!cliente.rg">
+                                                <td>RG</td>
+                                                <td>{{cliente.rg}}</td>
+                                        </tr>
+                                        <tr [hidden]="!cliente.cpf">
+                                                <td>CPF</td>
+                                                <td>{{cliente.cpf}}</td>
+                                        </tr>
+                                        <tr [hidden]="!cliente.cnpj">
+                                                <td>CNPJ</td>
+                                                <td>{{cliente.cnpj}}</td>
+                                        </tr>
+                                        <tr [hidden]="!cliente.ie">
+                                                <td>IE</td>
+                                                <td>{{cliente.ie}}</td>
+                                        </tr>
+                                        <tr>
+                                                <td>Data de cadastro</td>
+                                                <td>{{cliente.dataCadastro | date: 'dd/MM/yyyy'}}</td>
+                                        </tr>
+                                        <tr>
+                                                <td>Status</td>
+                                                <td>{{cliente.ativo == 1 ? 'Ativado' : 'Desativado'}}</td>
+                                        </tr>
+                                </tbody>
+                        </table>
+
+                        <button type="submit" class="btn btn-primary" (click)="excluirCliente()"> <i class="fas fa-trash"></i> Excluir cliente</button>
+                        <a class="btn btn-secondary espaco-botoes" routerLink="/cliente"><i class="fas fa-undo"></i>
+                                Voltar</a>
+                </div>
+        </div>
+</div>

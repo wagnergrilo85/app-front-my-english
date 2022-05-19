@@ -1,0 +1,49 @@
+
+
+.footer{
+   
+    margin-top: 105px;
+    background: #ebecece3;
+    padding-left: -30px !important;
+    padding-right: -30px !important;
+    margin-left: 0px !important;
+    margin-right: 0px;
+    
+}
+#rodape h6{
+    text-align: center;
+    margin-top: 15px;
+}
+.footer-autor{
+    text-align: center;
+    font-size: 12px;
+    margin-top: -5px !important;
+    margin-bottom: 15px;
+}
+
+#rodape{
+    margin-top: 105px;
+    background: #ebecece3;
+    padding-left: -40px !important;
+    padding-right: -40px !important;
+    
+}
+.footer-index{
+    margin-top: 145px;
+}
+
+.footer-categoria{
+    margin-top:285px ;
+}
+.footer-emp{
+    margin-top: 221px;
+}
+
+.icone-rede-social{
+    font-size: 25px;
+    text-align: center !important;
+}
+
+.separar{
+        margin-left: 10px;
+}
