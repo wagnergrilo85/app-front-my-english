@@ -23,28 +23,29 @@ export class PalavraService {
     return this.http.post(`/api/palavras/cadastrar`, palavra);
   }
 
-  pesquisarPalavraPorId(id: number) : Observable < any > {
-      return this.http.get(`/api/palavra/${id}`);
+  pesquisarPalavraPorId(id: number) : Observable <any> {
+      return this.http.get(`/api/palavras/pesquisar/${id}`);
   }
 
-  editarPalavra(palavra : PalavrasModel, id: number) : Observable <any> {
-    return this.http.put(`/api/palavra/${id}`, palavra);
+  editarPalavra(palavra : PalavrasModel) : Observable <any> {
+    console.log(palavra);
+    return this.http.put(`/api/palavras/editar`, palavra);
   }
 
   deletarPalavra(id : number) : Observable < any > {
-    return this.http.delete(`${this.api}/palavra/${id}`);
+    return this.http.delete(`/api/palavras/excluir/${id}`);
   }
 
   filtrarPorNome(nome: string): Observable<any> {
-    return this.http.get(`${this.api}/palavra/filtrar/${nome}`);
+    return this.http.get(`/api/palavra/filtrar/${nome}`);
   }
 
   filtrarPalavraPorIngles(palavraIngles: string): Observable<any> {
-    return this.http.get(`${this.api}/palavra/filtrar/eg/${palavraIngles}`);
+    return this.http.get(`/api/palavra/filtrar/eg/${palavraIngles}`);
   }
 
   filtrarPalavraPorPortugues(palavraPortugues: string): Observable<any> {
-    return this.http.get(`${this.api}/palavra/filtrar/pt/${palavraPortugues}`);
+    return this.http.get(`/api/palavra/filtrar/pt/${palavraPortugues}`);
   }
 
 }

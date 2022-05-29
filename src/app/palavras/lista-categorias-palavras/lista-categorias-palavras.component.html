@@ -1,0 +1,54 @@
+
+<div class="container-fluid my-header">
+  <div class="container">
+          <div class="row">
+                  <div class="col-lg-6">
+                          <h3>Lista de categorias</h3>
+                  </div>
+          </div>
+  </div>
+</div>
+<br>
+<div class="container card-header-top">
+  <div class="row">
+
+          <div class="col-lg-9">
+                  <a class="btn btn-success  btn-xs top-header-my float-left" routerLink="/palavras/cadastrar/categoria"><i class="fas fa-plus"></i> Nova Categoria</a>
+          </div>
+          
+          <div class="col-lg-3">
+                  <a class="btn btn-danger  btn-xs top-header-my float-right" routerLink="/palavras/cadastrar/categoria"> <i class="fas fa-filter"></i> Filtrar </a>
+                  <a class="btn btn-info  btn-xs top-header-my float-right" routerLink="/palavras/cadastrar/categoria" style="margin-right: 10px;"> <i class="fas fa-print"></i> Imprimir </a>
+          </div>
+
+  </div>
+</div>
+<div class="container body-new">
+  <div class="row">
+          <div class="col-lg-12">
+                  <br>
+                  <table class="table table-bordered table-striped tabela">
+                          <thead>
+                                  <tr>
+                                          <th scope="col">ID</th>
+                                          <th scope="col">Nome</th>
+                                          <th scope="col" class="text-center">Ações</th>
+                                  </tr>
+                          </thead>
+                          <tbody>
+                                  <tr *ngFor="let categoria of categoriaPalavra">
+                                          <th>{{categoria.id}}</th>
+                                          <td>{{categoria.nome}}</td>
+                                          <td class="text-center">
+                                                  <div class="btn-group">
+                                                          <a href="#" class="btn  btn-xs btn-inside-table-list" data-toggle="tooltip" data-placement="top" title="Editar categoria" ><i class="far fa-edit"></i></a>
+                                                          <a href="#" class="btn  btn-xs btn-inside-table-list" [routerLink]="['/palavras/excluir/categoria/', categoria.id]"><i class="fas fa-trash"></i></a>
+                                                  </div>
+                                          </td>
+                                  </tr>
+                          </tbody>
+
+                  </table>
+          </div>
+  </div>
+</div>
