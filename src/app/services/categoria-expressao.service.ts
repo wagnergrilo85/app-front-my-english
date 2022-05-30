@@ -11,7 +11,7 @@ export class CategoriaExpressaoService {
 
   constructor(private http: HttpClient) { }
 
-    listarCategorias(): Observable<any>{
+  listarCategorias(): Observable<any>{
       return this.http.get(`/api/categoria-expressoes/listar`);
   }
 

@@ -1,15 +1,12 @@
-<div class="container">
-  <br>
-  <div class="row">
-          <div class="col-lg-6">
-                  <h3>Lista de frases</h3>
-          </div>
-          <div class="col-lg-6">
-                  <a class="btn btn-success float-right" routerLink="/frases/cadastrar"><i class="fas fa-plus"></i> Novo fraseente</a>
-          </div>
-  </div>
-</div>
-<br>
+<app-header-top [texto]="'Lista de palavras'"></app-header-top>
+
+  <card-top-listar
+   [labelNovaEntidade] = "'Nova Palavra'"
+   [rotaNovaEntidade] = "'/palavras/cadastrar'"
+   [rotaListaCategorias]="'/palavras/listar/categoria'"
+   [rotaListaTipos]="'/palavras/listar/categoria'"
+   [rotaFiltrar]=""
+   [rotaImprimir]=""></card-top-listar>
 
 <div class="container">
   <div class="row">
