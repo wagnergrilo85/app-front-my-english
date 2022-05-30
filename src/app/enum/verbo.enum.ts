@@ -1,5 +1,5 @@
 export enum VerboEnum{
-  "VERBO_REGULAR",
-  "VERBO_IRREGULAR",
-  "NAO_E_VERBO"
+  VERBO_REGULAR = "Verbo Regular",
+  VERBO_IRREGULAR = "Verbo Irregular",
+  NAO_E_VERBO = "Não é Verbo"
 }

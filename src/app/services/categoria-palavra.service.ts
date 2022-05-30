@@ -19,6 +19,7 @@ export class CategoriaPalavraService {
   }
 
   cadastrarCategoria(categoria: CategoriaPalavrasModel): Observable<any>{
+    console.log("entreiiiiiiiiiiiiiiiiiiiiiiiiiii")
     console.log(categoria);
     return this.http.post(`/api/categoria-palavras/cadastrar`, categoria);
   }

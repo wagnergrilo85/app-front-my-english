@@ -11,9 +11,30 @@
 <div class="container card-header-top">
   <div class="row">
           <div class="col-lg-12">
-                  <a class="btn btn-success  btn-xs top-header-my" routerLink="/palavras/cadastrar/categoria"><i  class="fas fa-plus"></i> Nova Categoria</a>
-                  <a class="btn btn-danger  btn-xs top-header-my float-right"  routerLink="/palavras"><i class="fas fa-undo"></i> Voltar </a>
-                  <a class="btn btn-info  btn-xs top-header-my float-right" (click)="editarPalavra()" style="margin-right: 10px;" > <i class="far fa-save"></i> Editar  </a>
+                  <a class="btn btn-success  btn-xs top-header-my" routerLink="/palavras/categorias/cadastrar"><i  class="fas fa-plus"></i> Nova Categoria</a>
+                  <a class="btn btn-danger  btn-xs top-header-my float-right"  routerLink="/palavras/categorias/listar"><i class="fas fa-undo"></i> Voltar </a>
+                  <a class="btn btn-info  btn-xs top-header-my float-right" (click)="editarCategoria()" style="margin-right: 10px;" > <i class="far fa-save"></i> Editar  </a>
           </div>
   </div>
 </div>
+
+<div class="container body-new">
+        <div class="row">
+          <div class="col-lg-12">
+            
+            <br>
+            <div class="alert alert-{{tipoAlerta}}" role="alert" [hidden]="!mensagemAlerta"> {{mensagemAlerta}} </div>
+            <form>
+              <div class="form-row">
+                <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+                  <label for="nome">Nome da categoria:</label>
+                  <input type="text" class="form-control" id="nome" placeholder="Informe o nome da categoria..."
+                    name="nome" [(ngModel)]="categoriaModel.nome">
+                </div>
+              </div>
+            </form>
+           
+          </div>
+        </div>
+      </div>
+      

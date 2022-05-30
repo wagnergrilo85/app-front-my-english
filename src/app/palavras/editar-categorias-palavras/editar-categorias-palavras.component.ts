@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaPalavrasModel } from 'src/app/model/categoria-palavras.model';
+import { TipoPalavraModel } from 'src/app/model/tipo-palavra.model';
 import { CategoriaPalavraService } from 'src/app/services/categoria-palavra.service';
+import { TipoPalavraService } from 'src/app/services/tipo-palavra.service';
 
 
 @Component({
@@ -14,10 +16,12 @@ export class EditarCategoriasPalavrasComponent implements OnInit {
   public categoriaModel: CategoriaPalavrasModel = new CategoriaPalavrasModel();
   mensagemAlerta: string = "";
   tipoAlerta: string = "success";
+ 
 
   constructor(private categoriaServise: CategoriaPalavraService, 
     private router: Router,
-    private activeRoute: ActivatedRoute) { }
+    private activeRoute: ActivatedRoute,
+   ) { }
 
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
@@ -29,7 +33,9 @@ export class EditarCategoriasPalavrasComponent implements OnInit {
     });
   }
 
-  editarPalavra(){
+  
+
+  editarCategoria(){
     this.mensagemAlerta = "";
 
     if (this.categoriaModel.nome == "" || this.categoriaModel.nome == null) {
@@ -38,7 +44,7 @@ export class EditarCategoriasPalavrasComponent implements OnInit {
       return false;
     }
     
-    this.categoriaServise.(this.categoriaModel).subscribe(categoriaEditada => {
+    this.categoriaServise.editarCategoria(this.categoriaModel).subscribe(categoriaEditada => {
       console.log("---------RESPOSTA-----------");
       console.log(categoriaEditada);
 

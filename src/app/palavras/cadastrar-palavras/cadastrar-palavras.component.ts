@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { VerboEnum } from 'src/app/enum/verbo.enum';
 import { PalavrasModel } from 'src/app/model/palavras.model';
+import { TipoPalavraModel } from 'src/app/model/tipo-palavra.model';
 import { PalavraService } from 'src/app/services/palavra.service';
+import { TipoPalavraService } from 'src/app/services/tipo-palavra.service';
 
 @Component({
   selector: 'app-cadastrar-palavras',
@@ -12,13 +16,29 @@ export class CadastrarPalavrasComponent implements OnInit {
   public palavraModel: PalavrasModel = new PalavrasModel();
   mensagemAlerta: string = "";
   tipoAlerta: string = "success";
+  public tipoPalavras: Array<TipoPalavraModel> = [];
+  public verboEnum = VerboEnum;
+  enumKeysVerboEnum = [];
 
-  constructor(private palavraService: PalavraService) {
+  tipoPalavra: TipoPalavraModel;
+
+  constructor(
+    private palavraService: PalavraService,
+    private tipoPalavraServise: TipoPalavraService) 
+  {
+    this.enumKeysVerboEnum = Object.keys(this.verboEnum);
   }
 
   ngOnInit() {
     this.palavraModel.rating = 3;
     this.palavraModel.status = 1;
+    this.getListaTipo();
+  }
+
+  getListaTipo(){
+    this.tipoPalavraServise.listarTipos().subscribe(respListaTipos =>{
+      this.tipoPalavras = respListaTipos;
+    })
   }
 
   cadastrar() {

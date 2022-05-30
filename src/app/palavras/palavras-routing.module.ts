@@ -4,6 +4,7 @@ import { CadastrarCategoriasPalavrasComponent } from './cadastrar-categorias-pal
 import { CadastrarPalavrasComponent } from './cadastrar-palavras/cadastrar-palavras.component';
 import { CadastrarTipoPalavraComponent } from './cadastrar-tipo-palavra/cadastrar-tipo-palavra.component';
 import { ConsultarPalavrasComponent } from './consultar-palavras/consultar-palavras.component';
+import { EditarCategoriasPalavrasComponent } from './editar-categorias-palavras/editar-categorias-palavras.component';
 import { EditarPalavrasComponent } from './editar-palavras/editar-palavras.component';
 import { EditarTipoPalavraComponent } from './editar-tipo-palavra/editar-tipo-palavra.component';
 import { ExcluirCategoriaPalavrasComponent } from './excluir-categoria-palavras/excluir-categoria-palavras.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
 
   {path: 'palavras/categorias/listar', component: ListaCategoriasPalavrasComponent},
   {path: 'palavras/categorias/cadastrar', component: CadastrarCategoriasPalavrasComponent},
-  {path: 'palavras/categorias/editar/:id', component: ListaCategoriasPalavrasComponent},
+  {path: 'palavras/categorias/editar/:id', component: EditarCategoriasPalavrasComponent},
   {path: 'palavras/categorias/excluir/:id',  component: ExcluirCategoriaPalavrasComponent},
 
   {path: 'palavras/tipos/listar', component: ListarTipoPalavraComponent},
