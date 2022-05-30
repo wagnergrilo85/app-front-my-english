@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaPalavrasModel } from 'src/app/model/categoria-palavras.model';
-import { CategoriaService } from 'src/app/services/categoria.service';
+import { CategoriaPalavraService } from 'src/app/services/categoria-palavra.service';
 
 @Component({
   selector: 'app-lista-categorias-palavras',
@@ -9,14 +9,13 @@ import { CategoriaService } from 'src/app/services/categoria.service';
 })
 export class ListaCategoriasPalavrasComponent implements OnInit {
 
-  categoriaPalavra: Array<CategoriaPalavrasModel> =[];
+  categorias: Array<CategoriaPalavrasModel> = [];
 
-  constructor(private categoriaService: CategoriaService ) { }
+  constructor(private categoriaPalavraService: CategoriaPalavraService ) { }
 
   ngOnInit() {
-    this.categoriaService.listarCategorias().subscribe(listaCategoria=> {
-      console.log(listaCategoria);      
-      this.categoriaPalavra = listaCategoria;
+    this.categoriaPalavraService.listarCategorias().subscribe(listaCategoria => {
+      this.categorias = listaCategoria;
     });
   }
 

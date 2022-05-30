@@ -12,20 +12,26 @@ import { ListaCategoriasPalavrasComponent } from './lista-categorias-palavras/li
 import { CadastrarCategoriasPalavrasComponent } from './cadastrar-categorias-palavras/cadastrar-categorias-palavras.component';
 import { EditarCategoriasPalavrasComponent } from './editar-categorias-palavras/editar-categorias-palavras.component';
 import { ExcluirCategoriaPalavrasComponent } from './excluir-categoria-palavras/excluir-categoria-palavras.component';
+import { CadastrarTipoPalavraComponent } from './cadastrar-tipo-palavra/cadastrar-tipo-palavra.component';
+import { ListarTipoPalavraComponent } from './listar-tipo-palavra/listar-tipo-palavra.component';
+import { ExcluirTipoPalavraComponent } from './excluir-tipo-palavra/excluir-tipo-palavra.component';
+import { EditarTipoPalavraComponent } from './editar-tipo-palavra/editar-tipo-palavra.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [ListarPalavrasComponent, 
-    CadastrarPalavrasComponent, 
-    ConsultarPalavrasComponent, 
-    EditarPalavrasComponent, 
-    ExcluirPalavrasComponent, 
-    ListaCategoriasPalavrasComponent, 
-    CadastrarCategoriasPalavrasComponent, 
-    EditarCategoriasPalavrasComponent, ExcluirCategoriaPalavrasComponent],
+  declarations: [ListarPalavrasComponent,
+    CadastrarPalavrasComponent,
+    ConsultarPalavrasComponent,
+    EditarPalavrasComponent,
+    ExcluirPalavrasComponent,
+    ListaCategoriasPalavrasComponent,
+    CadastrarCategoriasPalavrasComponent,
+    EditarCategoriasPalavrasComponent, ExcluirCategoriaPalavrasComponent, CadastrarTipoPalavraComponent, ListarTipoPalavraComponent, ExcluirTipoPalavraComponent, EditarTipoPalavraComponent],
   imports: [
     FormsModule,
     CommonModule,
-    PalavrasRoutingModule
+    PalavrasRoutingModule,
+    SharedModule
   ]
 })
 export class PalavrasModule { }

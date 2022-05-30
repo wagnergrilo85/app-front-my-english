@@ -12,12 +12,14 @@ export class ExcluirPalavrasComponent implements OnInit {
 
   public palavra: PalavrasModel = new PalavrasModel();
   mensagemAlerta : string = "";
-  
-  
-  constructor(private palavraService: PalavraService, private route: Router, private activeRoute : ActivatedRoute) { }
+
+
+  constructor(private palavraService: PalavraService,
+    private route: Router,
+    private activeRoute : ActivatedRoute) { }
 
   ngOnInit() {
-    
+
     this.activeRoute.params.subscribe(params => {
       if (params.hasOwnProperty('id')) {
         this.palavraService.pesquisarPalavraPorId(+ params['id']).subscribe(palavraExcluir => {

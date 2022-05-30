@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaPalavrasModel } from 'src/app/model/categoria-palavras.model';
-import { CategoriaService } from 'src/app/services/categoria.service';
+import { CategoriaPalavraService } from 'src/app/services/categoria-palavra.service';
 
 @Component({
   selector: 'app-cadastrar-categorias-palavras',
@@ -15,7 +15,7 @@ export class CadastrarCategoriasPalavrasComponent implements OnInit {
 
   tipoAlerta: string = "success";
 
-  constructor(private categoriaService: CategoriaService) { }
+  constructor(private categoriaPalavraService: CategoriaPalavraService) { }
 
   ngOnInit() {
   }
@@ -29,7 +29,7 @@ export class CadastrarCategoriasPalavrasComponent implements OnInit {
       return false;
     }
 
-    this.categoriaService.cadastrarCategoria(this.categoria).subscribe(categoriaCadastrada => {
+    this.categoriaPalavraService.cadastrarCategoria(this.categoria).subscribe(categoriaCadastrada => {
       console.log("---------RESPOSTA-----------");
       console.log(categoriaCadastrada);
 

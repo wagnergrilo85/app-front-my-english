@@ -7,9 +7,9 @@ import { CategoriaPalavrasModel } from '../model/categoria-palavras.model';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriaService {
+export class CategoriaPalavraService {
 
-  
+
   private api: string = API;
 
   constructor(private http: HttpClient) { }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaPalavrasModel } from 'src/app/model/categoria-palavras.model';
-import { CategoriaService } from 'src/app/services/categoria.service';
+import { CategoriaPalavraService } from 'src/app/services/categoria-palavra.service';
 
 @Component({
   selector: 'app-excluir-categoria-palavras',
@@ -13,14 +13,14 @@ export class ExcluirCategoriaPalavrasComponent implements OnInit {
   public categoria: CategoriaPalavrasModel = new CategoriaPalavrasModel();
   mensagemAlerta : string = "";
 
-  constructor(private categoriaServise: CategoriaService, 
+  constructor(private categoriaPalavraService: CategoriaPalavraService,
     private router: Router,
     private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
       if (params.hasOwnProperty('id')) {
-        this.categoriaServise.pesquisarCategoriaPorId(+params['id']).subscribe(categoriaExcluir => {
+        this.categoriaPalavraService.pesquisarCategoriaPorId(+params['id']).subscribe(categoriaExcluir => {
             this.categoria = categoriaExcluir;
           }, error => console.log('Opss deu erro ' + error))
       }
@@ -30,7 +30,7 @@ export class ExcluirCategoriaPalavrasComponent implements OnInit {
   excluirCategoria(){
     if (confirm("Deseja excluir a categoria " + "?")) {
 
-      this.categoriaServise.deletarCategoria(+this.categoria.id).subscribe(respostaCategoria => {
+      this.categoriaPalavraService.deletarCategoria(+this.categoria.id).subscribe(respostaCategoria => {
         console.log("-------------")
         console.log(respostaCategoria)
         if(respostaCategoria){

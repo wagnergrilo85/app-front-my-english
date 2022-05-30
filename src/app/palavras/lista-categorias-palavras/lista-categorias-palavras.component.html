@@ -15,7 +15,7 @@
           <div class="col-lg-9">
                   <a class="btn btn-success  btn-xs top-header-my float-left" routerLink="/palavras/cadastrar/categoria"><i class="fas fa-plus"></i> Nova Categoria</a>
           </div>
-          
+
           <div class="col-lg-3">
                   <a class="btn btn-danger  btn-xs top-header-my float-right" routerLink="/palavras/cadastrar/categoria"> <i class="fas fa-filter"></i> Filtrar </a>
                   <a class="btn btn-info  btn-xs top-header-my float-right" routerLink="/palavras/cadastrar/categoria" style="margin-right: 10px;"> <i class="fas fa-print"></i> Imprimir </a>
@@ -36,7 +36,7 @@
                                   </tr>
                           </thead>
                           <tbody>
-                                  <tr *ngFor="let categoria of categoriaPalavra">
+                                  <tr *ngFor="let categoria of categorias">
                                           <th>{{categoria.id}}</th>
                                           <td>{{categoria.nome}}</td>
                                           <td class="text-center">
