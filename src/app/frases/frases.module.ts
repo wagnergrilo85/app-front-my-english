@@ -17,6 +17,7 @@ import { ListarCategoriaFraseComponent } from './listar-categoria-frase/listar-c
 import { CadastrarCategoriaFraseComponent } from './cadastrar-categoria-frase/cadastrar-categoria-frase.component';
 import { EditarCategoriaFraseComponent } from './editar-categoria-frase/editar-categoria-frase.component';
 import { ExcluirCategoriaFraseComponent } from './excluir-categoria-frase/excluir-categoria-frase.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [ListarFrasesComponent, CadastrarFrasesComponent, ConsultarFrasesComponent, ExcluirFrasesComponent, EditarFrasesComponent, EditarTipoFraseComponent, CadastrarTipoFraseComponent, ExcluirTipoFraseComponent, ListarTipoFraseComponent, ListarCategoriaFraseComponent, CadastrarCategoriaFraseComponent, EditarCategoriaFraseComponent, ExcluirCategoriaFraseComponent],
@@ -25,7 +26,8 @@ import { ExcluirCategoriaFraseComponent } from './excluir-categoria-frase/exclui
     FormsModule,
     FrasesRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class FrasesModule { }

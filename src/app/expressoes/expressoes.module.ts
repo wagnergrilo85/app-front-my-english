@@ -17,6 +17,7 @@ import { EditarTipoExpressaoComponent } from './editar-tipo-expressao/editar-tip
 import { ListarTipoExpressaoComponent } from './listar-tipo-expressao/listar-tipo-expressao.component';
 import { CadastrarTipoExpressaoComponent } from './cadastrar-tipo-expressao/cadastrar-tipo-expressao.component';
 import { ExcluirTipoExpressaoComponent } from './excluir-tipo-expressao/excluir-tipo-expressao.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [ConsultarExpressoesComponent, CadastrarExpressoesComponent, ListarExpressoesComponent, EditarExpressoesComponent, ExcluirExpressoesComponent, ExcluirCategoriaExpressaoComponent, ListarCategoriaExpressaoComponent, CadastrarCategoriaExpressaoComponent, EditarCategoriaExpressaoComponent, EditarTipoExpressaoComponent, ListarTipoExpressaoComponent, CadastrarTipoExpressaoComponent, ExcluirTipoExpressaoComponent],
@@ -25,7 +26,8 @@ import { ExcluirTipoExpressaoComponent } from './excluir-tipo-expressao/excluir-
     FormsModule,
     ExpressoesRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   exports: []
 })

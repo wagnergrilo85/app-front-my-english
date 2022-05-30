@@ -11,7 +11,7 @@ export class TipoExpressaoService {
 
   constructor(private http: HttpClient) { }
 
-    listarTipos(): Observable<any>{
+  listarTipos(): Observable<any>{
       return this.http.get(`/api/tipo-expressoes/listar`);
   }
 
