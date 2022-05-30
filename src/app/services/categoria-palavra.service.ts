@@ -30,4 +30,9 @@ export class CategoriaPalavraService {
   pesquisarCategoriaPorId(id: number) : Observable <any> {
     return this.http.get(`/api/categoria-palavras/pesquisar/${id}`);
 }
+
+  editarCategoria(categoriaPalavra : CategoriaPalavrasModel) : Observable <any> {
+    console.log(categoriaPalavra);
+    return this.http.put(`/api/categoria-palavras/editar`, categoriaPalavra);
+  }
 }

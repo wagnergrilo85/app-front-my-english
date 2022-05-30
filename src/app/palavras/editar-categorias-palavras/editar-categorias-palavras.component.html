@@ -1,1 +1,19 @@
-<p>editar-categorias-palavras works!</p>
+<div class="container-fluid my-header">
+  <div class="container">
+          <div class="row">
+                  <div class="col-lg-6">
+                          <h3>Editar categoria</h3>
+                  </div>
+          </div>
+  </div>
+</div>
+<br>
+<div class="container card-header-top">
+  <div class="row">
+          <div class="col-lg-12">
+                  <a class="btn btn-success  btn-xs top-header-my" routerLink="/palavras/cadastrar/categoria"><i  class="fas fa-plus"></i> Nova Categoria</a>
+                  <a class="btn btn-danger  btn-xs top-header-my float-right"  routerLink="/palavras"><i class="fas fa-undo"></i> Voltar </a>
+                  <a class="btn btn-info  btn-xs top-header-my float-right" (click)="editarPalavra()" style="margin-right: 10px;" > <i class="far fa-save"></i> Editar  </a>
+          </div>
+  </div>
+</div>

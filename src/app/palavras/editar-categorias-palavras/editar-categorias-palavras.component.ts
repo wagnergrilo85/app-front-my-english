@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CategoriaPalavrasModel } from 'src/app/model/categoria-palavras.model';
+import { CategoriaPalavraService } from 'src/app/services/categoria-palavra.service';
+
 
 @Component({
   selector: 'app-editar-categorias-palavras',
@@ -7,9 +11,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarCategoriasPalavrasComponent implements OnInit {
 
-  constructor() { }
+  public categoriaModel: CategoriaPalavrasModel = new CategoriaPalavrasModel();
+  mensagemAlerta: string = "";
+  tipoAlerta: string = "success";
+
+  constructor(private categoriaServise: CategoriaPalavraService, 
+    private router: Router,
+    private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activeRoute.params.subscribe(params => {
+      if (params.hasOwnProperty('id')) {
+        this.categoriaServise.pesquisarCategoriaPorId(+ params['id']).subscribe(categoriaEditar => {
+            this.categoriaModel = categoriaEditar;
+          }, error => console.log('Opss deu erro ' + error))
+      }
+    });
+  }
+
+  editarPalavra(){
+    this.mensagemAlerta = "";
+
+    if (this.categoriaModel.nome == "" || this.categoriaModel.nome == null) {
+      this.mensagemAlerta = "O nome da categoria é obrigatória";
+      this.tipoAlerta = "danger";
+      return false;
+    }
+    
+    this.categoriaServise.(this.categoriaModel).subscribe(categoriaEditada => {
+      console.log("---------RESPOSTA-----------");
+      console.log(categoriaEditada);
+
+        if (categoriaEditada !== null) {
+          this.mensagemAlerta = `Categoria ${this.categoriaModel.nome} editada com sucesso!`;
+          this.tipoAlerta = "success";
+        } else {
+          this.mensagemAlerta = `Erro ao cadastrar a categoria ${this.categoriaModel.nome}!`;
+          this.tipoAlerta = "danger";
+        }
+    });
+
   }
 
 }
