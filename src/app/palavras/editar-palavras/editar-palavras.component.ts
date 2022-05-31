@@ -14,7 +14,8 @@ export class EditarPalavrasComponent implements OnInit {
   mensagemAlerta: string = "";
   tipoAlerta: string = "success";
   
-  constructor(private palavraService: PalavraService,private route : Router, 
+  constructor(private palavraService: PalavraService,
+    private route : Router, 
     private activeRoute : ActivatedRoute, ) { }
 
   ngOnInit() {

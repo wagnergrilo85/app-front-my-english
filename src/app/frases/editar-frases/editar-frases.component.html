@@ -1,1 +1,121 @@
-<p>editar-frases works!</p>
+<div class="container-fluid my-header">
+  <div class="container">
+          <div class="row">
+                  <div class="col-lg-6">
+                          <h3>Editar frase</h3>
+                  </div>
+          </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container card-header-top">
+  <div class="row">
+          <div class="col-lg-12">
+                  <a class="btn btn-success  btn-xs top-header-my" routerLink="/frases/cadastrar"><i  class="fas fa-plus"></i> Nova Frase</a>
+                  <a class="btn btn-danger  btn-xs top-header-my float-right"  routerLink="/frases"><i class="fas fa-undo"></i> Voltar</a>
+                  <a class="btn btn-info  btn-xs top-header-my float-right"  style="margin-right: 10px;" (click)="editarFrase()"> <i class="far fa-save"></i> Salvar  </a>
+          </div>
+  </div>
+</div>
+<div class="container body-new">
+  <div class="row">
+    <div class="col-lg-12">
+      <br>
+      <div class="alert alert-{{tipoAlerta}}" role="alert" [hidden]="!mensagemAlerta"> {{mensagemAlerta}} </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-lg-6 col-sm-6 col-xs-12 col-md-6">
+            <label for="fraseEg">Frase em inglês:</label>
+            <input type="text" class="form-control" id="fraseEg" placeholder="Informe a frase em ingles..."
+              name="fraseEg" [(ngModel)]="fraseModel.fraseEg">
+          </div>
+          <div class="form-group col-lg-6 col-sm-6 col-xs-12 col-md-6">
+            <label for="frasePt">Frase em português:</label>
+            <input type="text" class="form-control" id="frasePt" placeholder="Informe a frase em português..."
+              name="frasePt" [(ngModel)]="fraseModel.frasePt">
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="rating">Rating:</label>
+            <select id="rating" class="form-control" name="rating" [(ngModel)]="fraseModel.rating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="usada">Muito Usada:</label>
+            <select id="usada" class="form-control" name="usada" [(ngModel)]="fraseModel.muitoUsada">
+              <option  [ngValue]="true">SIM</option>
+              <option  [ngValue]="false">NÃO</option>
+
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="status">Status:</label>
+            <select id="status" class="form-control" name="status" [(ngModel)]="fraseModel.status">
+              <option value="1">Ativado</option>
+              <option value="0">Desativado</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="tipoFrase">Tipo da frase:</label>
+            <select id="tipoFrase" class="form-control" name="tipoFrase" [(ngModel)]="fraseModel.tipoFrase">
+              <option *ngFor = "let tipo of tipoFrases" [ngValue]="tipo"> {{tipo.nome}}</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="palavraEg">Tag:</label>
+            <input type="text" class="form-control" id="tag" placeholder="Informe a tag..."
+              name="tag" [(ngModel)]="fraseModel.tag">
+          </div>  
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="container body-new">
+  <div class="row">
+        <div class="col-lg-8 col-sm-8 col-xs-12 col-md-4">
+          <label for="categoriaFrase">Categoria da frase:</label>
+          <select id="categoriaFrase" class="form-control" name="categoriaFrase" [(ngModel)]="categoriaFraseSelecionada">
+            <option *ngFor = "let frase of arrayCategoriaFrases" [ngValue]="categoria"> {{frase.nome}}</option>
+          </select>
+        </div>
+        
+        <div class="col-lg-4 col-sm-4 col-xs-12 col-md-4">
+          <button class="btn btn-info" style="margin-top: 30px;" (click)="adicionarCategoriaFrase()">Adicionar</button>
+        </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-12 col-sm-8 col-xs-12 col-md-4">
+
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Categoria</th>
+                <th>Remover</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let frase of fraseModel.categoriaFrases; let i = index;">
+              <td> {{i + 1}} </td>
+              <td> {{frase.id}} </td>
+              <td> {{frase.nome}} </td>
+              <td> 
+                <button class="btn btn-xs btn-danger" (click)="removerCategoriaFrase(frase)">Remover</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+</div>
