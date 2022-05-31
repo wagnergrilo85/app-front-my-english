@@ -25,5 +25,9 @@ export class CategoriaExpressaoService {
 
   pesquisarCategoriaPorId(id: number) : Observable <any> {
     return this.http.get(`/api/categoria-expressoes/pesquisar/${id}`);
-}
+  }
+
+  editarCategoria(categoria: CategoriaExpressaoModel) : Observable <any> {
+    return this.http.put(`/api/categoria-expressoes/editar`, categoria);
+  }
 }

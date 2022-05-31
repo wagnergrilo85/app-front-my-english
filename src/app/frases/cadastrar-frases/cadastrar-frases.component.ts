@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StatusEnum } from 'src/app/enum/status.enum';
 import { CategoriaFraseModel } from 'src/app/model/categoria-frase.model';
 import { FrasesModel } from 'src/app/model/frases.model';
 import { TipoFraseModel } from 'src/app/model/tipo-frase.model';
@@ -18,18 +19,22 @@ export class CadastrarFrasesComponent implements OnInit {
   public tipoAlerta: string = "success";
   public tipoFrases: Array<TipoFraseModel> = [];
   public arrayCategoriaFrases: Array<CategoriaFraseModel> = [];
+  public statusEnum = StatusEnum;
+  public enumKeysStatusEnum = [];
   public categoriaFraseSelecionada: CategoriaFraseModel;
 
   constructor(
     private fraseService: FraseService,
     private tipoFraseService: TipoFraseService,
     private categoriaFraseService: CategoriaFraseService
-  ) { }
+  ) {
+    this.enumKeysStatusEnum = Object.keys(this.statusEnum);
+  }
 
   ngOnInit() {
     this.fraseModel.categoriaFrases = [];
     this.fraseModel.rating = 3;
-    this.fraseModel.status = 1;
+    this.fraseModel.status = StatusEnum.ATIVADO;
     this.getListaTipoFrase();
     this.getListaCategoriasPalavras();
   }
@@ -80,13 +85,13 @@ export class CadastrarFrasesComponent implements OnInit {
         }
       }, error => {
         console.log(error);
-        
+
         this.mensagemAlerta = error;
         this.tipoAlerta = "danger";
       }
-    ); 
+    );
   }
-  
+
   public adicionarCategoriaFrase(){
     if(this.categoriaFraseSelecionada != null){
       this.fraseModel.categoriaFrases.push(this.categoriaFraseSelecionada);
@@ -106,7 +111,7 @@ export class CadastrarFrasesComponent implements OnInit {
     this.fraseModel.frasePt= "";
     this.fraseModel.tag = "";
     this.fraseModel.rating = 3;
-    this.fraseModel.status = 0;
+    this.fraseModel.status = StatusEnum.ATIVADO;
     this.categoriaFraseSelecionada = null;
   }
 

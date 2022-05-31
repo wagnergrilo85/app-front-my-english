@@ -15,7 +15,7 @@
           <div class="col-lg-12">
                   <a class="btn btn-success  btn-xs top-header-my" routerLink="/palavras/cadastrar"><i  class="fas fa-plus"></i> Nova Palavra</a>
                   <a class="btn btn-danger  btn-xs top-header-my float-right"  routerLink="/palavras/listar/categoria"><i class="fas fa-undo"></i> Voltar </a>
-                  <a class="btn btn-info  btn-xs top-header-my float-right" (click)="editarCategoria()" style="margin-right: 10px;" > <i class="far fa-save"></i> Editar  </a>
+                  <a class="btn btn-info  btn-xs top-header-my float-right" (click)="editarPalavra()" style="margin-right: 10px;" > <i class="far fa-save"></i> Editar  </a>
           </div>
   </div>
 </div>
@@ -23,7 +23,6 @@
 <div class="container body-new">
   <div class="row">
     <div class="col-lg-12">
-      
       <br>
       <div class="alert alert-{{tipoAlerta}}" role="alert" [hidden]="!mensagemAlerta"> {{mensagemAlerta}} </div>
       <form>
@@ -51,13 +50,76 @@
           <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
             <label for="status">Status:</label>
             <select id="status" class="form-control" name="status" [(ngModel)]="palavraModel.status">
-              <option value="1">Ativado</option>
-              <option value="0">Desativado</option>
+              <option *ngFor = "let status of enumKeysStatusEnum" [ngValue]="status">{{statusEnum[status]}}</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="tipoPalavra">Tipo da palavra: {{palavraModel.tipoPalavra | json}}</label>
+            <select id="tipoPalavra" class="form-control" name="tipoPalavra" (change)="alterarTipoSelect($event)" >
+              <option *ngFor = "let tipo of tipoPalavras"  [value]="tipo.id">
+                    {{tipo.nome}}
+              </option>
+            </select>
+
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="palavraEg">Tag:</label>
+            <input type="text" class="form-control" id="tag" placeholder="Informe a tag..."
+              name="tag" [(ngModel)]="palavraModel.tag">
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="tipoPalavra">Verbo:</label>
+            <select id="verbo" class="form-control" name="tipoPalavra" [(ngModel)]="palavraModel.verbo">
+              <option *ngFor = "let verbo of enumKeysVerboEnum" [ngValue]="verbo">{{verboEnum[verbo]}}</option>
             </select>
           </div>
         </div>
       </form>
-     
+
     </div>
   </div>
+</div>
+
+
+<br>
+
+<div class="container body-new">
+  <div class="row">
+        <div class="col-lg-8 col-sm-8 col-xs-12 col-md-4">
+          <label for="categoriaPalavra">Categoria de palavra:</label>
+          <select id="categoriaPalavra" class="form-control" name="categoriaPalavra" [(ngModel)]="categoriaPalavraSelecionada">
+            <option *ngFor = "let categoria of arrayCategoriaPalavras" [ngValue]="categoria"> {{categoria.nome}}</option>
+          </select>
+        </div>
+
+        <div class="col-lg-4 col-sm-4 col-xs-12 col-md-4">
+          <button class="btn btn-info" style="margin-top: 30px;" (click)="adicionarCategoria()">Adicionar</button>
+        </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-12 col-sm-8 col-xs-12 col-md-4">
+
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Categoria</th>
+                <th>Remover</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let categoria of palavraModel.categoriaPalavras; let i = index;">
+              <td> {{i + 1}} </td>
+              <td> {{categoria.id}} </td>
+              <td> {{categoria.nome}} </td>
+              <td>
+                <button class="btn btn-xs btn-danger" (click)="removerCategoria(categoria)">Remover</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { StatusEnum } from 'src/app/enum/status.enum';
 import { VerboEnum } from 'src/app/enum/verbo.enum';
 import { CategoriaPalavrasModel } from 'src/app/model/categoria-palavras.model';
 import { PalavrasModel } from 'src/app/model/palavras.model';
@@ -21,23 +22,25 @@ export class CadastrarPalavrasComponent implements OnInit {
   public tipoPalavras: Array<TipoPalavraModel> = [];
   public arrayCategoriaPalavras: Array<CategoriaPalavrasModel> = [];
   public verboEnum = VerboEnum;
+  public statusEnum = StatusEnum;
+  public enumKeysStatusEnum = [];
   public enumKeysVerboEnum = [];
   public categoriaPalavraSelecionada: CategoriaPalavrasModel;
-
 
   constructor(
     private palavraService: PalavraService,
     private tipoPalavraServise: TipoPalavraService,
     private categoriaPalavraService: CategoriaPalavraService
-    ) 
+    )
   {
     this.enumKeysVerboEnum = Object.keys(this.verboEnum);
+    this.enumKeysStatusEnum = Object.keys(this.statusEnum);
   }
 
   ngOnInit() {
     this.palavraModel.categoriaPalavras = [];
     this.palavraModel.rating = 3;
-    this.palavraModel.status = 1;
+    this.palavraModel.status = StatusEnum.ATIVADO;
     this.getListaTipo();
     this.getListaCategoriasPalavras();
   }
@@ -53,7 +56,7 @@ export class CadastrarPalavrasComponent implements OnInit {
       this.arrayCategoriaPalavras = lista;
     })
   }
-  
+
   cadastrar() {
 
     this.mensagemAlerta = "";
@@ -88,7 +91,7 @@ export class CadastrarPalavrasComponent implements OnInit {
         }
       }, error => {
         console.log(error);
-        
+
         this.mensagemAlerta = error;
         this.tipoAlerta = "danger";
       }
@@ -115,7 +118,7 @@ export class CadastrarPalavrasComponent implements OnInit {
     this.palavraModel.palavraPt = "";
     this.palavraModel.tag = "";
     this.palavraModel.rating = 3;
-    this.palavraModel.status = 0;
+    this.palavraModel.status = StatusEnum.ATIVADO;
     this.categoriaPalavraSelecionada = null;
   }
 }

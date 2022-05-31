@@ -25,5 +25,10 @@ export class TipoExpressaoService {
 
   pesquisarTipoPorId(id: number) : Observable <any> {
     return this.http.get(`/api/tipo-expressoes/pesquisar/${id}`);
-}
+  }
+
+  editarTipo(tipo: TipoExpressaoModel) : Observable <any> {
+    return this.http.put(`/api/tipo-expressoes/editar`, tipo);
+  }
+
 }

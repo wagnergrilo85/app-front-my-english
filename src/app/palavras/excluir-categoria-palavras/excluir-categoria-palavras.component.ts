@@ -11,7 +11,7 @@ import { CategoriaPalavraService } from 'src/app/services/categoria-palavra.serv
 export class ExcluirCategoriaPalavrasComponent implements OnInit {
 
   public categoria: CategoriaPalavrasModel = new CategoriaPalavrasModel();
-  mensagemAlerta : string = "";
+  public mensagemAlerta : string = "";
 
   constructor(private categoriaPalavraService: CategoriaPalavraService,
     private router: Router,
@@ -29,10 +29,7 @@ export class ExcluirCategoriaPalavrasComponent implements OnInit {
 
   excluirCategoria(){
     if (confirm("Deseja excluir a categoria " + "?")) {
-
       this.categoriaPalavraService.deletarCategoria(+this.categoria.id).subscribe(respostaCategoria => {
-        console.log("-------------")
-        console.log(respostaCategoria)
         if(respostaCategoria){
           alert('Categoria de palavra deletada com sucesso!');
           this.router.navigate(['/palavras/categorias/listar'])
@@ -41,9 +38,7 @@ export class ExcluirCategoriaPalavrasComponent implements OnInit {
           return false;
         }
       });
-
     }
-
   }
 
 }

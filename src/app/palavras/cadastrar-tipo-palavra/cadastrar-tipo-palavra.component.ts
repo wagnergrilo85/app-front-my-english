@@ -45,7 +45,4 @@ export class CadastrarTipoPalavraComponent implements OnInit {
 
   }
 
-
-
-
 }

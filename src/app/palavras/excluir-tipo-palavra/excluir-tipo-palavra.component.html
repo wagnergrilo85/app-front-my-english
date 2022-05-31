@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
                         <a class="btn btn-success  btn-xs top-header-my" routerLink="/palavras/tipos/cadastrar"><i
                                         class="fas fa-plus"></i> Novo Tipo</a>
-                        <a class="btn btn-danger  btn-xs top-header-my float-right" routerLink="palavras/tipos/listar"><i
+                        <a class="btn btn-danger  btn-xs top-header-my float-right" routerLink="/palavras/tipos/listar"><i
                                         class="fas fa-undo"></i> Voltar </a>
                         <a class="btn btn-info  btn-xs top-header-my float-right" (click)="excluirTipo()"
                                 style="margin-right: 10px;"> <i class="fas fa-trash"></i> Excluir </a>
@@ -34,17 +34,17 @@
                           <thead>
                                   <tr>
                                           <td>Coluna</td>
-                                          <td>Tipo da palavra cadastradas</td>
+                                          <td>Tipo da palavra</td>
                                   </tr>
                           </thead>
                           <tbody>
                                   <tr>
                                           <td>ID</td>
-                                          <td>{{tipo.id}}</td>
+                                          <td>{{tipoModel.id}}</td>
                                   </tr>
                                   <tr>
                                           <td>Nome</td>
-                                          <td>{{tipo.nome}}</td>
+                                          <td>{{tipoModel.nome}}</td>
                                   </tr>
                           </tbody>
                   </table>

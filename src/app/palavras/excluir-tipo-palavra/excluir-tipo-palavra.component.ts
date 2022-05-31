@@ -10,8 +10,8 @@ import { TipoPalavraService } from 'src/app/services/tipo-palavra.service';
 })
 export class ExcluirTipoPalavraComponent implements OnInit {
 
-  public tipoPalavra: TipoPalavraModel = new TipoPalavraModel();
-  mensagemAlerta : string = "";
+  public tipoModel: TipoPalavraModel = new TipoPalavraModel();
+  public mensagemAlerta : string = "";
 
   constructor(private tiposPalavraService:TipoPalavraService,
     private router: Router,
@@ -22,18 +22,16 @@ export class ExcluirTipoPalavraComponent implements OnInit {
     this.activeRoute.params.subscribe(params => {
       if (params.hasOwnProperty('id')) {
         this.tiposPalavraService.pesquisarTipoPorId(+params['id']).subscribe(tipoPalavraExcluir => {
-            this.tipoPalavra = tipoPalavraExcluir;
+            this.tipoModel = tipoPalavraExcluir;
           }, error => console.log('Opss deu erro ' + error))
       }
     });
   }
 
   excluirTipo(){
-    if (confirm("Deseja excluir a categoria " + "?")) {
+    if (confirm("Deseja excluir o tipo " + "?")) {
 
-      this.tiposPalavraService.deletarTipo(+this.tipoPalavra.id).subscribe(respostaTipoPalavra => {
-        console.log("-------------")
-        console.log(respostaTipoPalavra)
+      this.tiposPalavraService.deletarTipo(+this.tipoModel.id).subscribe(respostaTipoPalavra => {
         if(respostaTipoPalavra){
           alert('Tipo da palavra deletada com sucesso!');
           this.router.navigate(['/palavras/tipos/listar'])
@@ -42,7 +40,6 @@ export class ExcluirTipoPalavraComponent implements OnInit {
           return false;
         }
       });
-
     }
   }
 }

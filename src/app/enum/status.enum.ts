@@ -1,4 +1,5 @@
 export enum StatusEnum{
 
-  "ATIVADO", "DESATIVADO"
+  "ATIVADO" = "Ativado",
+  "DESATIVADO" = "Desativado"
 }

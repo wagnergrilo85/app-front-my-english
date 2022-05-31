@@ -10,15 +10,14 @@ import { CategoriaPalavraService } from 'src/app/services/categoria-palavra.serv
 export class CadastrarCategoriasPalavrasComponent implements OnInit {
 
   public categoria: CategoriaPalavrasModel = new CategoriaPalavrasModel();
-
-  mensagemAlerta: string = '';
-
-  tipoAlerta: string = "success";
+  public mensagemAlerta: string = '';
+  public tipoAlerta: string = "success";
 
   constructor(private categoriaPalavraService: CategoriaPalavraService) { }
 
   ngOnInit() {
   }
+
   cadastrar() {
 
     this.mensagemAlerta = "";
@@ -30,19 +29,15 @@ export class CadastrarCategoriasPalavrasComponent implements OnInit {
     }
 
     this.categoriaPalavraService.cadastrarCategoria(this.categoria).subscribe(categoriaCadastrada => {
-      console.log("---------RESPOSTA-----------");
-      console.log(categoriaCadastrada);
-
         if (categoriaCadastrada !== null) {
           this.mensagemAlerta = `Categoria ${this.categoria.nome} cadastrada com sucesso!`;
           this.tipoAlerta = "success";
+          this.categoria = new CategoriaPalavrasModel();
         } else {
           this.mensagemAlerta = `Erro ao cadastrar palavra ${this.categoria.nome}!`;
           this.tipoAlerta = "danger";
         }
     });
-
   }
-
 
 }
