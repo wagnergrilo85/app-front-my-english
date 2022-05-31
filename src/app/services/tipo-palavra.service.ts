@@ -26,4 +26,9 @@ export class TipoPalavraService {
   pesquisarTipoPorId(id: number) : Observable <any> {
     return this.http.get(`/api/tipo-palavras/pesquisar/${id}`);
   }
+
+  editarCategoria(tipo: TipoPalavraModel) : Observable <any> {
+    console.log(tipo);
+    return this.http.put(`/api/tipo-palavras/editar`, tipo);
+  }
 }

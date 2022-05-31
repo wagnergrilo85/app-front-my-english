@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TipoPalavraModel } from 'src/app/model/tipo-palavra.model';
+import { TipoPalavraService } from 'src/app/services/tipo-palavra.service';
 
 @Component({
   selector: 'app-listar-tipo-palavra',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarTipoPalavraComponent implements OnInit {
 
-  constructor() { }
+  public tiposPalavra: Array<TipoPalavraModel> =[]; 
+
+  constructor(private tipoPalavraServise: TipoPalavraService) { }
 
   ngOnInit() {
+    this.getTiposPalavras();
+  }
+
+  getTiposPalavras(){
+    this.tipoPalavraServise.listarTipos().subscribe(resultTipos =>{
+      this.tiposPalavra = resultTipos;
+    })
+
   }
 
 }

@@ -1,1 +1,42 @@
-<p>editar-tipo-palavra works!</p>
+<div class="container-fluid my-header">
+  <div class="container">
+          <div class="row">
+                  <div class="col-lg-6">
+                          <h3>Editar Tipo da palavra</h3>
+                  </div>
+          </div>
+  </div>
+</div>
+<br>
+<div class="container card-header-top">
+  <div class="row">
+          <div class="col-lg-12">
+                  <a class="btn btn-success  btn-xs top-header-my" routerLink="/palavras/tipos/cadastrar"><i  class="fas fa-plus"></i> Novo Tipo</a>
+                  <a class="btn btn-danger  btn-xs top-header-my float-right"  routerLink="/palavras/tipos/listar"><i class="fas fa-undo"></i> Voltar </a>
+                  <a class="btn btn-info  btn-xs top-header-my float-right" (click)="editarTipo()" style="margin-right: 10px;" > <i class="far fa-save"></i> Editar  </a>
+
+          </div>
+  </div>
+</div>
+
+<div class="container body-new">
+  <div class="row">
+    <div class="col-lg-12">
+      
+      <br>
+      <div class="alert alert-{{tipoAlerta}}" role="alert" [hidden]="!mensagemAlerta"> {{mensagemAlerta}} </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="nome">Nome do tipo da palavra:</label>
+            <input type="text" class="form-control" id="nomeTipo" placeholder="Informe o nome do tipo da palavra..."
+              name="nomeTipo" [(ngModel)]="tipoPalavra.nome">
+          </div>
+        </div>
+      </form>
+     
+    </div>
+  </div>
+</div>
+
+

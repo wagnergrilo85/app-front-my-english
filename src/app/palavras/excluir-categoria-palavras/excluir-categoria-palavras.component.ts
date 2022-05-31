@@ -35,7 +35,7 @@ export class ExcluirCategoriaPalavrasComponent implements OnInit {
         console.log(respostaCategoria)
         if(respostaCategoria){
           alert('Categoria de palavra deletada com sucesso!');
-          this.router.navigate(['/palavras/listar/categoria'])
+          this.router.navigate(['/palavras/categorias/listar'])
         }else{
           this.mensagemAlerta = "Erro ao excluir a categoria!";
           return false;
