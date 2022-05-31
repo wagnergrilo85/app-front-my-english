@@ -25,5 +25,9 @@ export class TipoFraseService {
 
   pesquisarTipoPorId(id: number) : Observable <any> {
     return this.http.get(`/api/tipo-frases/pesquisar/${id}`);
-}
+  }
+
+  editarTipo(tipo: TipoFraseModel) : Observable <any> {
+    return this.http.put(`/api/tipo-frases/editar`, tipo);
+  }
 }

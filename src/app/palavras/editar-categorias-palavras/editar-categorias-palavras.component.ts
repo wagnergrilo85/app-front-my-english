@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriaPalavrasModel } from 'src/app/model/categoria-palavras.model';
-import { TipoPalavraModel } from 'src/app/model/tipo-palavra.model';
 import { CategoriaPalavraService } from 'src/app/services/categoria-palavra.service';
-import { TipoPalavraService } from 'src/app/services/tipo-palavra.service';
-
 
 @Component({
   selector: 'app-editar-categorias-palavras',
@@ -14,11 +11,10 @@ import { TipoPalavraService } from 'src/app/services/tipo-palavra.service';
 export class EditarCategoriasPalavrasComponent implements OnInit {
 
   public categoriaModel: CategoriaPalavrasModel = new CategoriaPalavrasModel();
-  mensagemAlerta: string = "";
-  tipoAlerta: string = "success";
- 
+  public mensagemAlerta: string = "";
+  public tipoAlerta: string = "success";
 
-  constructor(private categoriaServise: CategoriaPalavraService, 
+  constructor(private categoriaServise: CategoriaPalavraService,
     private router: Router,
     private activeRoute: ActivatedRoute,
    ) { }
@@ -33,8 +29,6 @@ export class EditarCategoriasPalavrasComponent implements OnInit {
     });
   }
 
-  
-
   editarCategoria(){
     this.mensagemAlerta = "";
 
@@ -43,11 +37,8 @@ export class EditarCategoriasPalavrasComponent implements OnInit {
       this.tipoAlerta = "danger";
       return false;
     }
-    
-    this.categoriaServise.editarCategoria(this.categoriaModel).subscribe(categoriaEditada => {
-      console.log("---------RESPOSTA-----------");
-      console.log(categoriaEditada);
 
+    this.categoriaServise.editarCategoria(this.categoriaModel).subscribe(categoriaEditada => {
         if (categoriaEditada !== null) {
           this.mensagemAlerta = `Categoria ${this.categoriaModel.nome} editada com sucesso!`;
           this.tipoAlerta = "success";
@@ -56,7 +47,6 @@ export class EditarCategoriasPalavrasComponent implements OnInit {
           this.tipoAlerta = "danger";
         }
     });
-
   }
 
 }

@@ -50,8 +50,7 @@
           <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
             <label for="status">Status:</label>
             <select id="status" class="form-control" name="status" [(ngModel)]="palavraModel.status">
-              <option value="1">Ativado</option>
-              <option value="0">Desativado</option>
+              <option *ngFor = "let status of enumKeysStatusEnum" [ngValue]="status">{{statusEnum[status]}}</option>
             </select>
           </div>
           <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
@@ -68,11 +67,11 @@
           <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
             <label for="tipoPalavra">Verbo:</label>
             <select id="verbo" class="form-control" name="tipoPalavra" [(ngModel)]="palavraModel.verbo">
-              <option *ngFor = "let verbo of enumKeysVerboEnum" [value]="verbo">{{verboEnum[verbo]}}</option>
+              <option *ngFor = "let verbo of enumKeysVerboEnum" [ngValue]="verbo">{{verboEnum[verbo]}}</option>
             </select>
           </div>
 
-          
+
         </div>
       </form>
     </div>
@@ -89,7 +88,7 @@
             <option *ngFor = "let categoria of arrayCategoriaPalavras" [ngValue]="categoria"> {{categoria.nome}}</option>
           </select>
         </div>
-        
+
         <div class="col-lg-4 col-sm-4 col-xs-12 col-md-4">
           <button class="btn btn-info" style="margin-top: 30px;" (click)="adicionarCategoria()">Adicionar</button>
         </div>
@@ -112,7 +111,7 @@
               <td> {{i + 1}} </td>
               <td> {{categoria.id}} </td>
               <td> {{categoria.nome}} </td>
-              <td> 
+              <td>
                 <button class="btn btn-xs btn-danger" (click)="removerCategoria(categoria)">Remover</button>
               </td>
             </tr>

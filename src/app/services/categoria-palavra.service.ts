@@ -19,8 +19,6 @@ export class CategoriaPalavraService {
   }
 
   cadastrarCategoria(categoria: CategoriaPalavrasModel): Observable<any>{
-    console.log("entreiiiiiiiiiiiiiiiiiiiiiiiiiii")
-    console.log(categoria);
     return this.http.post(`/api/categoria-palavras/cadastrar`, categoria);
   }
 
@@ -30,10 +28,9 @@ export class CategoriaPalavraService {
 
   pesquisarCategoriaPorId(id: number) : Observable <any> {
     return this.http.get(`/api/categoria-palavras/pesquisar/${id}`);
-}
+  }
 
   editarCategoria(categoriaPalavra : CategoriaPalavrasModel) : Observable <any> {
-    console.log(categoriaPalavra);
     return this.http.put(`/api/categoria-palavras/editar`, categoriaPalavra);
   }
 }

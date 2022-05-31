@@ -19,7 +19,6 @@ export class PalavraService {
   }
 
   cadastrarPalavra(palavra: PalavrasModel): Observable<any>{
-    console.log(palavra);
     return this.http.post(`/api/palavras/cadastrar`, palavra);
   }
 
@@ -28,7 +27,6 @@ export class PalavraService {
   }
 
   editarPalavra(palavra : PalavrasModel) : Observable <any> {
-    console.log(palavra);
     return this.http.put(`/api/palavras/editar`, palavra);
   }
 

@@ -9,11 +9,10 @@ import { TipoPalavraService } from 'src/app/services/tipo-palavra.service';
   styleUrls: ['./editar-tipo-palavra.component.css']
 })
 export class EditarTipoPalavraComponent implements OnInit {
-  
+
   public tipoPalavra: TipoPalavraModel = new TipoPalavraModel();
-  mensagemAlerta: string = "";
-  tipoAlerta: string = "success";
- 
+  public mensagemAlerta: string = "";
+  public tipoAlerta: string = "success";
 
   constructor(
     private tipoPalavraService: TipoPalavraService,
@@ -21,7 +20,7 @@ export class EditarTipoPalavraComponent implements OnInit {
     private activeRoute: ActivatedRoute,
   ) {
 
-   }
+  }
 
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
@@ -33,7 +32,7 @@ export class EditarTipoPalavraComponent implements OnInit {
     });
   }
 
-  editarCategoria(){
+  editarTipo(){
     this.mensagemAlerta = "";
 
     if (this.tipoPalavra.nome == "" || this.tipoPalavra.nome == null) {
@@ -41,11 +40,8 @@ export class EditarTipoPalavraComponent implements OnInit {
       this.tipoAlerta = "danger";
       return false;
     }
-    
-    this.tipoPalavraService.editarCategoria(this.tipoPalavra).subscribe(tipoPalavraEditada => {
-      console.log("---------RESPOSTA-----------");
-      console.log(tipoPalavraEditada);
 
+    this.tipoPalavraService.editarTipo(this.tipoPalavra).subscribe(tipoPalavraEditada => {
         if (tipoPalavraEditada !== null) {
           this.mensagemAlerta = `Tipo da palavra ${this.tipoPalavra.nome} editada com sucesso!`;
           this.tipoAlerta = "success";

@@ -1,6 +1,6 @@
 {
   "/api/*":{
-    "target": "https://app-my-english-wg.herokuapp.com/",
+    "target": "http://localhost:8080/",
     "secure": true,
     "logLevel": "info",
     "pathRewrite":{
