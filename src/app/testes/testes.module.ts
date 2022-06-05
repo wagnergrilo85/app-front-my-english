@@ -8,12 +8,17 @@ import { EditarTesteSiginificadoPalavrasComponent } from './editar-teste-siginif
 import { ListarTesteSiginificadoFrasesComponent } from './listar-teste-siginificado-frases/listar-teste-siginificado-frases.component';
 import { CadastrarTesteSiginificadoFrasesComponent } from './cadastrar-teste-siginificado-frases/cadastrar-teste-siginificado-frases.component';
 import { EditarTesteSiginificadoFrasesComponent } from './editar-teste-siginificado-frases/editar-teste-siginificado-frases.component';
+import { RealizarTesteSiginificadoPalavrasComponent } from './realizar-teste-siginificado-palavras/realizar-teste-siginificado-palavras.component';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ListarTesteSiginificadoPalavrasComponent, CadastrarTesteSiginificadoPalavrasComponent, EditarTesteSiginificadoPalavrasComponent, ListarTesteSiginificadoFrasesComponent, CadastrarTesteSiginificadoFrasesComponent, EditarTesteSiginificadoFrasesComponent],
+  declarations: [ListarTesteSiginificadoPalavrasComponent, CadastrarTesteSiginificadoPalavrasComponent, EditarTesteSiginificadoPalavrasComponent, ListarTesteSiginificadoFrasesComponent, CadastrarTesteSiginificadoFrasesComponent, EditarTesteSiginificadoFrasesComponent,  RealizarTesteSiginificadoPalavrasComponent],
   imports: [
     CommonModule,
-    TestesRoutingModule
+    TestesRoutingModule,
+    SharedModule,
+    FormsModule
   ]
 })
 export class TestesModule { }

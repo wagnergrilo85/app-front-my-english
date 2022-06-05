@@ -1,1 +1,27 @@
-<p>cadastrar-tipo-frase works!</p>
+<app-header-top [texto]="'Novo Tipo'"></app-header-top>
+<div class="container card-header-top">
+  <div class="row">
+          <div class="col-lg-12">
+                  <a class="btn btn-success  btn-xs top-header-my" routerLink="/frases/tipos/cadastrar"><i  class="fas fa-plus"></i> Novo tipo</a>
+                  <a class="btn btn-danger  btn-xs top-header-my float-right"  routerLink="/frases/tipos/listar"><i class="fas fa-undo"></i> Voltar</a>
+                  <a class="btn btn-info  btn-xs top-header-my float-right"  style="margin-right: 10px;" (click)="cadastrarTipo()"> <i class="far fa-save"></i> Salvar  </a>
+          </div>
+  </div>
+</div>
+<div class="container body-new">
+  <div class="row">
+    <div class="col-lg-12">
+      <br>
+      <div class="alert alert-{{tipoAlerta}}" role="alert" [hidden]="!mensagemAlerta"> {{mensagemAlerta}} </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="nomeTipo">Nome do Tipo:</label>
+            <input type="text" class="form-control" id="nomeTipo" placeholder="Informe o nome do tipo da palavra..."
+              name="nomeTipo" [(ngModel)]="tipoFrase.nome">
+          </div> 
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TesteSignificadoPalavraModel } from 'src/app/model/teste-significado-palavra.model';
+import { TestesService } from 'src/app/services/testes.service';
 
 @Component({
   selector: 'app-listar-teste-siginificado-palavras',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarTesteSiginificadoPalavrasComponent implements OnInit {
 
-  constructor() { }
+  listaTeste: TesteSignificadoPalavraModel[];
+
+  constructor(private _testesService: TestesService) { }
 
   ngOnInit() {
+    this._testesService.listarTesteSignificadoPalavras().subscribe(lista => {
+      this.listaTeste = lista;
+    });
   }
-
 }

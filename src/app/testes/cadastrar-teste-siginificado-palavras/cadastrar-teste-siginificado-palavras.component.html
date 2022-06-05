@@ -1,1 +1,109 @@
-<p>cadastrar-teste-siginificado-palavras works!</p>
+<div class="container-fluid my-header">
+  <div class="container">
+          <div class="row">
+                  <div class="col-lg-6">
+                          <h3>Novo teste de palavra</h3>
+                  </div>
+          </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container card-header-top">
+  <div class="row">
+          <div class="col-lg-12">
+                  <a class="btn btn-success  btn-xs top-header-my" routerLink="/teste-significado-palavras/cadastrar"><i  class="fas fa-plus"></i> Novo teste</a>
+                  <a class="btn btn-danger  btn-xs top-header-my float-right"  routerLink="/teste-significado-palavras/listar"><i class="fas fa-undo"></i> Voltar</a>
+                  <a class="btn btn-info  btn-xs top-header-my float-right" style="margin-right: 10px;" (click)="cadastrar()"> <i class="far fa-save"></i> Salvar  </a>
+          </div>
+  </div>
+</div>
+
+<div class="container body-new">
+  <div class="row">
+    <div class="col-lg-12">
+      <br>
+      <div class="alert alert-{{tipoAlerta}}" role="alert" [hidden]="!mensagemAlerta"> {{mensagemAlerta}} </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="nomeTeste">Nome do teste:</label>
+            <input type="text" class="form-control" id="nomeTeste" placeholder="Informe o nome do teste..."
+              name="nomeTeste" [(ngModel)]="testeSignificadoPalavraModel.nomeTeste">
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="qtdPalavras">Quantidade de palavras:</label>
+            <input type="number" class="form-control" id="qtdPalavras" placeholder="Informe a qtd de palavras..."
+              name="qtdPalavras" [(ngModel)]="testeSignificadoPalavraModel.qtdPalavras">
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="direcao">Direção:</label>
+            <select id="direcao" class="form-control" name="rating" [(ngModel)]="testeSignificadoPalavraModel.direcao">
+              <option value="PARA_PORTUGUES">Para o português</option>
+              <option value="PARA_INGLES">Para o inglês</option>
+              <option value="INDIFERENTE">Indiferente</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="status">Status:</label>
+            <select id="status" class="form-control" name="status" [(ngModel)]="testeSignificadoPalavraModel.status">
+              <option value="0">Aberto</option>
+              <option value="1">Pendente</option>
+              <option value="2">Realizado</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="tipoPalavra">Tipo da palavra:</label>
+            <select id="tipoPalavra" class="form-control" name="tipoPalavra" [(ngModel)]="testeSignificadoPalavraModel.tipoPalavra">
+              <option *ngFor = "let tipo of tipoPalavras" [ngValue]="tipo"> {{tipo.nome}}</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container body-new">
+  <div class="row">
+        <div class="col-lg-8 col-sm-8 col-xs-12 col-md-4">
+          <label for="categoriaPalavra">Categoria de palavra:</label>
+          <select id="categoriaPalavra" class="form-control" name="categoriaPalavra" [(ngModel)]="categoriaPalavraSelecionada">
+            <option *ngFor = "let categoria of arrayCategoriaPalavras" [ngValue]="categoria"> {{categoria.nome}}</option>
+          </select>
+        </div>
+
+        <div class="col-lg-4 col-sm-4 col-xs-12 col-md-4">
+          <button class="btn btn-info" style="margin-top: 30px;" (click)="adicionarCategoria()">Adicionar</button>
+        </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-12 col-sm-8 col-xs-12 col-md-4">
+
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Categoria</th>
+                <th>Remover</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let categoria of testeSignificadoPalavraModel.categoriaPalavra; let i = index;">
+              <td> {{i + 1}} </td>
+              <td> {{categoria.id}} </td>
+              <td> {{categoria.nome}} </td>
+              <td>
+                <button class="btn btn-xs btn-danger" (click)="removerCategoria(categoria)">Remover</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+</div>

@@ -1,1 +1,117 @@
-<p>editar-expressoes works!</p>
+<div class="container-fluid my-header">
+  <div class="container">
+          <div class="row">
+                  <div class="col-lg-6">
+                          <h3>Editar expressões</h3>
+                  </div>
+          </div>
+  </div>
+</div>
+
+<br>
+<div class="container card-header-top">
+  <div class="row">
+          <div class="col-lg-12">
+                  <a class="btn btn-success  btn-xs top-header-my" routerLink="/expressoes/cadastrar"><i  class="fas fa-plus"></i> Nova Expressão</a>
+                  <a class="btn btn-danger  btn-xs top-header-my float-right"  routerLink="/expressoes"><i class="fas fa-undo"></i> Voltar </a>
+                  <a class="btn btn-info  btn-xs top-header-my float-right" (click)="editarPalavra()" style="margin-right: 10px;" > <i class="far fa-save"></i> Editar  </a>
+          </div>
+  </div>
+</div>
+<div class="container body-new">
+  <div class="row">
+    <div class="col-lg-12">
+      <br>
+      <div class="alert alert-{{tipoAlerta}}" role="alert" [hidden]="!mensagemAlerta"> {{mensagemAlerta}} </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="expressaoEg">Expressão em inglês:</label>
+            <input type="text" class="form-control" id="expressaoEg" placeholder="Informe a expressão em ingles..."
+              name="expressaoEg" [(ngModel)]="expressaoModel.expressaoEg">
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="expressaoPt">Expressão em português:</label>
+            <input type="text" class="form-control" id="expressaoPt" placeholder="Informe a palavra em português..."
+              name="expressaoPt" [(ngModel)]="expressaoModel.expressaoPt">
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="rating">Rating:</label>
+            <select id="rating" class="form-control" name="rating" [(ngModel)]="expressaoModel.rating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="status">Status:</label>
+            <select id="status" class="form-control" name="status" [(ngModel)]="expressaoModel.status">
+              <option *ngFor = "let status of enumKeysStatusEnum" [ngValue]="status">{{statusEnum[status]}}</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="tipoExpressao">Tipo da expressão:</label>
+            <select id="tipoExpressao" class="form-control" name="tipoExpressao" (change)="alterarTipoSelect($event)" >
+              <option *ngFor = "let tipo of tipoExpressao"  [value]="tipo.id">
+                    {{tipo.nome}}
+              </option>
+            </select>
+
+          </div>
+          <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
+            <label for="tag">Tag:</label>
+            <input type="text" class="form-control" id="tag" placeholder="Informe a tag..."
+              name="tag" [(ngModel)]="expressaoModel.tag">
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+<br>
+
+<div class="container body-new">
+  <div class="row">
+        <div class="col-lg-8 col-sm-8 col-xs-12 col-md-4">
+          <label for="categoriaExpressoes">Categoria de expressões:</label>
+          <select id="categoriaExpressoes" class="form-control" name="categoriaExpressoes" [(ngModel)]="categoriaExpressaoSelecionada">
+            <option *ngFor = "let expressao of arrayCategoriaExpressao" [ngValue]="expressao"> {{expressao.nome}}</option>
+          </select>
+        </div>
+
+        <div class="col-lg-4 col-sm-4 col-xs-12 col-md-4">
+          <button class="btn btn-info" style="margin-top: 30px;" (click)="adicionarCategoria()">Adicionar</button>
+        </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-12 col-sm-8 col-xs-12 col-md-4">
+
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Categoria</th>
+                <th>Remover</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let categoriaExpressao of expressaoModel.categoriaExpressoes; let i = index;">
+              <td> {{i + 1}} </td>
+              <td> {{categoriaExpressao.id}} </td>
+              <td> {{categoriaExpressao.nome}} </td>
+              <td>
+                <button class="btn btn-xs btn-danger" (click)="removerCategoria(categoriaExpressao)">Remover</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+</div>

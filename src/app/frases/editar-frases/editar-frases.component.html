@@ -57,8 +57,8 @@
           <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
             <label for="status">Status:</label>
             <select id="status" class="form-control" name="status" [(ngModel)]="fraseModel.status">
-              <option value="1">Ativado</option>
-              <option value="0">Desativado</option>
+              <option *ngFor = "let status of enumKeysStatusEnum" [ngValue]="status">{{statusEnum[status]}}</option>
+             
             </select>
           </div>
           <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
@@ -84,7 +84,7 @@
         <div class="col-lg-8 col-sm-8 col-xs-12 col-md-4">
           <label for="categoriaFrase">Categoria da frase:</label>
           <select id="categoriaFrase" class="form-control" name="categoriaFrase" [(ngModel)]="categoriaFraseSelecionada">
-            <option *ngFor = "let frase of arrayCategoriaFrases" [ngValue]="categoria"> {{frase.nome}}</option>
+            <option *ngFor = "let frase of arrayCategoriaFrases" [ngValue]="frase"> {{frase.nome}}</option>
           </select>
         </div>
         

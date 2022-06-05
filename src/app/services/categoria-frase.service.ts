@@ -27,4 +27,7 @@ export class CategoriaFraseService {
   pesquisarCategoriaPorId(id: number) : Observable <any> {
     return this.http.get(`/api/categoria-frases/pesquisar/${id}`);
 }
+editarCategoria(categoria: CategoriaFraseModel) : Observable <any> {
+  return this.http.put(`/api/categoria-frases/editar`, categoria);
+}
 }
