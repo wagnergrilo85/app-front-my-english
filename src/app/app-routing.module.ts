@@ -1,17 +1,12 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClienteModule } from './cliente/cliente.module';
 import { ExpressoesModule } from './expressoes/expressoes.module';
 import { FrasesModule } from './frases/frases.module';
 import { PalavrasModule } from './palavras/palavras.module';
 import { TestesModule } from './testes/testes.module';
 
 const routes: Routes = [
-    {
-      path: '',
-      loadChildren: () => import('./cliente/cliente.module').then(m => m.ClienteModule)
-    },
     {
       path: '',
       loadChildren: () => import('./frases/frases.module').then(m => m.FrasesModule)
@@ -37,7 +32,6 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes),
-    ClienteModule,
     ExpressoesModule,
     FrasesModule,
     PalavrasModule,

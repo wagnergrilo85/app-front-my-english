@@ -13,21 +13,21 @@ export class CategoriaFraseService {
   constructor(private http: HttpClient) { }
 
   listarCategorias(): Observable<any>{
-      return this.http.get(`/api/categoria-frases/listar`);
+      return this.http.get(`${API}/categoria-frases/listar`);
   }
 
   cadastrarCategoria(categoria: CategoriaFraseModel): Observable<any>{
-    return this.http.post(`/api/categoria-frases/cadastrar`, categoria);
+    return this.http.post(`${API}/categoria-frases/cadastrar`, categoria);
   }
 
   deletarCategoria(id : number) : Observable < any > {
-    return this.http.delete(`/api/categoria-frases/excluir/${id}`);
+    return this.http.delete(`${API}/categoria-frases/excluir/${id}`);
   }
 
   pesquisarCategoriaPorId(id: number) : Observable <any> {
-    return this.http.get(`/api/categoria-frases/pesquisar/${id}`);
+    return this.http.get(`${API}/categoria-frases/pesquisar/${id}`);
 }
 editarCategoria(categoria: CategoriaFraseModel) : Observable <any> {
-  return this.http.put(`/api/categoria-frases/editar`, categoria);
+  return this.http.put(`${API}/categoria-frases/editar`, categoria);
 }
 }

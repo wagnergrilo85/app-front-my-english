@@ -15,27 +15,27 @@ export class FraseService {
   }
 
   listarFrases(): Observable<any>{
-     return this.http.get(`/api/frases/listar`);
+     return this.http.get(`${API}/frases/listar`);
   }
 
   cadastrarFrases(frase: FrasesModel): Observable<any>{
-    return this.http.post(`/api/frases`, frase);
+    return this.http.post(`${API}/frases`, frase);
   }
 
   pesquisarFrasesPorId(id: number) : Observable < any > {
-      return this.http.get(`/api/frases/${id}`);
+      return this.http.get(`${API}/frases/${id}`);
   }
 
   editarFrases(frase : FrasesModel, id: number) : Observable <any> {
-    return this.http.put(`/api/frases/${id}`, frase);
+    return this.http.put(`${API}/frases/${id}`, frase);
   }
 
   deletarFrases(id : number) : Observable < any > {
-    return this.http.delete(`/api/Frases/${id}`);
+    return this.http.delete(`${API}/Frases/${id}`);
   }
 
   filtrarPorNome(nome: string): Observable<any> {
-    return this.http.get(`/api/frases/filtrar/${nome}`);
+    return this.http.get(`${API}/frases/filtrar/${nome}`);
   }
 
 }

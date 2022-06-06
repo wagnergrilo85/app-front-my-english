@@ -12,22 +12,22 @@ export class CategoriaExpressaoService {
   constructor(private http: HttpClient) { }
 
   listarCategorias(): Observable<any>{
-      return this.http.get(`/api/categoria-expressoes/listar`);
+      return this.http.get(`${API}/categoria-expressoes/listar`);
   }
 
   cadastrarCategoria(categoria: CategoriaExpressaoModel): Observable<any>{
-    return this.http.post(`/api/categoria-expressoes/cadastrar`, categoria);
+    return this.http.post(`${API}/categoria-expressoes/cadastrar`, categoria);
   }
 
   deletarCategoria(id : number) : Observable < any > {
-    return this.http.delete(`/api/categoria-expressoes/excluir/${id}`);
+    return this.http.delete(`${API}/categoria-expressoes/excluir/${id}`);
   }
 
   pesquisarCategoriaPorId(id: number) : Observable <any> {
-    return this.http.get(`/api/categoria-expressoes/pesquisar/${id}`);
+    return this.http.get(`${API}/categoria-expressoes/pesquisar/${id}`);
   }
 
   editarCategoria(categoria: CategoriaExpressaoModel) : Observable <any> {
-    return this.http.put(`/api/categoria-expressoes/editar`, categoria);
+    return this.http.put(`${API}/categoria-expressoes/editar`, categoria);
   }
 }

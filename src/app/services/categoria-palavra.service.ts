@@ -15,22 +15,22 @@ export class CategoriaPalavraService {
   constructor(private http: HttpClient) { }
 
   listarCategorias(): Observable<any>{
-      return this.http.get(`/api/categoria-palavras/listar`);
+      return this.http.get(`${API}/categoria-palavras/listar`);
   }
 
   cadastrarCategoria(categoria: CategoriaPalavrasModel): Observable<any>{
-    return this.http.post(`/api/categoria-palavras/cadastrar`, categoria);
+    return this.http.post(`${API}/categoria-palavras/cadastrar`, categoria);
   }
 
   deletarCategoria(id : number) : Observable < any > {
-    return this.http.delete(`/api/categoria-palavras/excluir/${id}`);
+    return this.http.delete(`${API}/categoria-palavras/excluir/${id}`);
   }
 
   pesquisarCategoriaPorId(id: number) : Observable <any> {
-    return this.http.get(`/api/categoria-palavras/pesquisar/${id}`);
+    return this.http.get(`${API}/categoria-palavras/pesquisar/${id}`);
   }
 
   editarCategoria(categoriaPalavra : CategoriaPalavrasModel) : Observable <any> {
-    return this.http.put(`/api/categoria-palavras/editar`, categoriaPalavra);
+    return this.http.put(`${API}/categoria-palavras/editar`, categoriaPalavra);
   }
 }

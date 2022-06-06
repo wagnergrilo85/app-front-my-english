@@ -12,22 +12,22 @@ export class TipoFraseService {
   constructor(private http: HttpClient) { }
 
   listarTipos(): Observable<any>{
-      return this.http.get(`/api/tipo-frases/listar`);
+      return this.http.get(`${API}/tipo-frases/listar`);
   }
 
   cadastrarTipo(tipo: TipoFraseModel): Observable<any>{
-    return this.http.post(`/api/tipo-frases/cadastrar`, tipo);
+    return this.http.post(`${API}/tipo-frases/cadastrar`, tipo);
   }
 
   deletarTipo(id : number) : Observable < any > {
-    return this.http.delete(`/api/tipo-frases/excluir/${id}`);
+    return this.http.delete(`${API}/tipo-frases/excluir/${id}`);
   }
 
   pesquisarTipoPorId(id: number) : Observable <any> {
-    return this.http.get(`/api/tipo-frases/pesquisar/${id}`);
+    return this.http.get(`${API}/tipo-frases/pesquisar/${id}`);
   }
 
   editarTipo(tipo: TipoFraseModel) : Observable <any> {
-    return this.http.put(`/api/tipo-frases/editar`, tipo);
+    return this.http.put(`${API}/tipo-frases/editar`, tipo);
   }
 }

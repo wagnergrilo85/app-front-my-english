@@ -12,22 +12,22 @@ export class TipoPalavraService {
   constructor(private http: HttpClient) { }
 
   listarTipos(): Observable<any>{
-      return this.http.get(`/api/tipo-palavras/listar`);
+      return this.http.get(`${API}/tipo-palavras/listar`);
   }
 
   cadastrarTipo(tipo: TipoPalavraModel): Observable<any>{
-    return this.http.post(`/api/tipo-palavras/cadastrar`, tipo);
+    return this.http.post(`${API}/tipo-palavras/cadastrar`, tipo);
   }
 
   deletarTipo(id : number) : Observable < any > {
-    return this.http.delete(`/api/tipo-palavras/excluir/${id}`);
+    return this.http.delete(`${API}/tipo-palavras/excluir/${id}`);
   }
 
   pesquisarTipoPorId(id: number) : Observable <any> {
-    return this.http.get(`/api/tipo-palavras/pesquisar/${id}`);
+    return this.http.get(`${API}/tipo-palavras/pesquisar/${id}`);
   }
 
   editarTipo(tipo: TipoPalavraModel) : Observable <any> {
-    return this.http.put(`/api/tipo-palavras/editar`, tipo);
+    return this.http.put(`${API}/tipo-palavras/editar`, tipo);
   }
 }

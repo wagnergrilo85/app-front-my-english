@@ -16,28 +16,28 @@ export class TestesService {
   }
 
   listarTesteSignificadoPalavras(): Observable<any>{
-     return this.http.get(`/api/teste-significado-palavras/listar`);
+     return this.http.get(`${API}/teste-significado-palavras/listar`);
   }
 
   cadastrarTesteSignificadoPalavra(teste: TesteSignificadoPalavraModel): Observable<any>{
-    return this.http.post(`/api/teste-significado-palavras/cadastrar`, teste);
+    return this.http.post(`${API}/teste-significado-palavras/cadastrar`, teste);
   }
 
   pesquisarTesteSignificadoPalavraPorId(id: number) : Observable <any> {
-      return this.http.get(`/api/teste-significado-palavras/pesquisar/${id}`);
+      return this.http.get(`${API}/teste-significado-palavras/pesquisar/${id}`);
   }
 
   editarTesteSignificadoPalavra(teste : TesteSignificadoPalavraModel) : Observable <any> {
-    return this.http.put(`/api/teste-significado-palavras/editar`, teste);
+    return this.http.put(`${API}/teste-significado-palavras/editar`, teste);
   }
 
   obterQuestionarioPerguntasPalavrasPorIdTeste(idTeste: number) : Observable <any> {
-    return this.http.get(`/api/teste-significado-palavras/questionario/perguntas/${idTeste}`);
+    return this.http.get(`${API}/teste-significado-palavras/questionario/perguntas/${idTeste}`);
   }
 
   salvarQuestionarioPerguntasPalavrasPorIdTeste(arrayQuestionarioTestePalavrasModel: Array<QuestionarioTestePalavrasModel>) : Observable <any> {
     console.log(arrayQuestionarioTestePalavrasModel);
-    return this.http.post(`/api/teste-significado-palavras/responder/perguntas/`, arrayQuestionarioTestePalavrasModel);
+    return this.http.post(`${API}/teste-significado-palavras/responder/perguntas/`, arrayQuestionarioTestePalavrasModel);
   }
 
 

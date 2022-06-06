@@ -15,35 +15,35 @@ export class ExpressaoService {
   }
 
   listarExpressao(): Observable<any>{
-     return this.http.get(`/api/expressoes/listar`);
+     return this.http.get(`${API}/expressoes/listar`);
   }
 
   cadastrarExpressao(expressao: ExpressoesModel): Observable<any>{
-    return this.http.post(`/api/expressoes/cadastrar`, expressao);
+    return this.http.post(`${API}/expressoes/cadastrar`, expressao);
   }
 
   pesquisarExpressaoPorId(id: number) : Observable < any > {
-      return this.http.get(`/api/expressoes/pesquisar/${id}`);
+      return this.http.get(`${API}/expressoes/pesquisar/${id}`);
   }
 
   editarExpressao(expressao : ExpressoesModel) : Observable <any> {
-    return this.http.put(`/api/expressoes/editar`, expressao);
+    return this.http.put(`${API}/expressoes/editar`, expressao);
   }
 
   deletarExpressao(id : number) : Observable < any > {
-    return this.http.delete(`/api/expressoes/excluir/${id}`);
+    return this.http.delete(`${API}/expressoes/excluir/${id}`);
   }
 
   filtrarPorNome(nome: string): Observable<any> {
-    return this.http.get(`/api/expressoes/filtrar/${nome}`);
+    return this.http.get(`${API}/expressoes/filtrar/${nome}`);
   }
 
   filtrarExpressaoPorIngles(expressaIngles: string): Observable<any> {
-    return this.http.get(`/api/expressoes/filtrar/eg/${expressaIngles}`);
+    return this.http.get(`${API}/expressoes/filtrar/eg/${expressaIngles}`);
   }
 
   filtrarExpressaoPorPortugues(expressaPortugues: string): Observable<any> {
-    return this.http.get(`/api/expressoes/filtrar/pt/${expressaPortugues}`);
+    return this.http.get(`${API}/expressoes/filtrar/pt/${expressaPortugues}`);
   }
 
 }

@@ -12,23 +12,23 @@ export class TipoExpressaoService {
   constructor(private http: HttpClient) { }
 
   listarTipos(): Observable<any>{
-      return this.http.get(`/api/tipo-expressoes/listar`);
+      return this.http.get(`${API}/tipo-expressoes/listar`);
   }
 
   cadastrarTipo(tipo: TipoExpressaoModel): Observable<any>{
-    return this.http.post(`/api/tipo-expressoes/cadastrar`, tipo);
+    return this.http.post(`${API}/tipo-expressoes/cadastrar`, tipo);
   }
 
   deletarTipo(id : number) : Observable < any > {
-    return this.http.delete(`/api/tipo-expressoes/excluir/${id}`);
+    return this.http.delete(`${API}/tipo-expressoes/excluir/${id}`);
   }
 
   pesquisarTipoPorId(id: number) : Observable <any> {
-    return this.http.get(`/api/tipo-expressoes/pesquisar/${id}`);
+    return this.http.get(`${API}/tipo-expressoes/pesquisar/${id}`);
   }
 
   editarTipo(tipo: TipoExpressaoModel) : Observable <any> {
-    return this.http.put(`/api/tipo-expressoes/editar`, tipo);
+    return this.http.put(`${API}/tipo-expressoes/editar`, tipo);
   }
 
 }
