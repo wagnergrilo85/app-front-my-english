@@ -18,7 +18,7 @@ export class EditarFrasesComponent implements OnInit {
   public fraseModel: FrasesModel= new FrasesModel();
   mensagemAlerta: string = "";
   tipoAlerta: string = "success";
-  public arrayCategoriaFrases: Array<FrasesModel> = [];
+  public arrayCategoriaFrases: Array<CategoriaFraseModel> = [];
   public tipoFrases: Array<TipoFraseModel> = [];
   public statusEnum = StatusEnum;
   public enumKeysStatusEnum = [];
@@ -27,7 +27,7 @@ export class EditarFrasesComponent implements OnInit {
   constructor(private fraseService: FraseService,
     private tipofraseServise: TipoFraseService,
     private categoriafraseService: CategoriaFraseService,
-    private route : Router, 
+    private route : Router,
     private activeRoute : ActivatedRoute,) {
       this.enumKeysStatusEnum = Object.keys(this.statusEnum);
      }
@@ -69,7 +69,7 @@ export class EditarFrasesComponent implements OnInit {
       this.tipoAlerta = "danger";
       return false;
     }
-    
+
     if (this.fraseModel.frasePt == "" || this.fraseModel.frasePt == null) {
       this.mensagemAlerta = "A frase em português é obrigatório";
       this.tipoAlerta = "danger";

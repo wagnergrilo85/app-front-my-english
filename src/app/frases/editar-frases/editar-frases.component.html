@@ -58,7 +58,7 @@
             <label for="status">Status:</label>
             <select id="status" class="form-control" name="status" [(ngModel)]="fraseModel.status">
               <option *ngFor = "let status of enumKeysStatusEnum" [ngValue]="status">{{statusEnum[status]}}</option>
-             
+
             </select>
           </div>
           <div class="form-group col-lg-4 col-sm-4 col-xs-12 col-md-4">
@@ -71,7 +71,7 @@
             <label for="palavraEg">Tag:</label>
             <input type="text" class="form-control" id="tag" placeholder="Informe a tag..."
               name="tag" [(ngModel)]="fraseModel.tag">
-          </div>  
+          </div>
         </div>
       </form>
     </div>
@@ -87,9 +87,9 @@
             <option *ngFor = "let frase of arrayCategoriaFrases" [ngValue]="frase"> {{frase.nome}}</option>
           </select>
         </div>
-        
+
         <div class="col-lg-4 col-sm-4 col-xs-12 col-md-4">
-          <button class="btn btn-info" style="margin-top: 30px;" (click)="adicionarCategoriaFrase()">Adicionar</button>
+          <button class="btn btn-info" style="margin-top: 30px;" (click)="adicionarCategoria()">Adicionar</button>
         </div>
   </div>
   <br>
@@ -110,7 +110,7 @@
               <td> {{i + 1}} </td>
               <td> {{frase.id}} </td>
               <td> {{frase.nome}} </td>
-              <td> 
+              <td>
                 <button class="btn btn-xs btn-danger" (click)="removerCategoriaFrase(frase)">Remover</button>
               </td>
             </tr>
