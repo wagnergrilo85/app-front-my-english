@@ -33,6 +33,8 @@ export class CadastrarCategoriasPalavrasComponent implements OnInit {
           this.mensagemAlerta = `Categoria ${this.categoria.nome} cadastrada com sucesso!`;
           this.tipoAlerta = "success";
           this.categoria = new CategoriaPalavrasModel();
+          this.categoria.nome = "";
+          this.categoria.id = null;
         } else {
           this.mensagemAlerta = `Erro ao cadastrar palavra ${this.categoria.nome}!`;
           this.tipoAlerta = "danger";

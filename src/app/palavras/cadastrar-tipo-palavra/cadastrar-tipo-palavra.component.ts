@@ -31,12 +31,11 @@ export class CadastrarTipoPalavraComponent implements OnInit {
     }
 
     this.tipoPalavraServise.cadastrarTipo(this.tipoPalavra).subscribe(tipopalavraCadastrada => {
-      console.log("---------RESPOSTA-----------");
-      console.log(tipopalavraCadastrada);
-
         if (tipopalavraCadastrada !== null) {
           this.mensagemAlerta = `Tipo da Palavra ${this.tipoPalavra.nome} cadastrada com sucesso!`;
           this.tipoAlerta = "success";
+          this.tipoPalavra.id = null;
+          this.tipoPalavra.nome = "";
         } else {
           this.mensagemAlerta = `Erro ao cadastrar o tipo da palavra ${this.tipoPalavra.nome}!`;
           this.tipoAlerta = "danger";

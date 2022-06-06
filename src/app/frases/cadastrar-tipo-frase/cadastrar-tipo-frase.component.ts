@@ -8,7 +8,7 @@ import { TipoFraseService } from 'src/app/services/tipo-frase.service';
   styleUrls: ['./cadastrar-tipo-frase.component.css']
 })
 export class CadastrarTipoFraseComponent implements OnInit {
-  
+
   public tipoFrase: TipoFraseModel = new TipoFraseModel();
 
   mensagemAlerta: string = '';
@@ -37,6 +37,8 @@ export class CadastrarTipoFraseComponent implements OnInit {
         if (tipofraseCadastrada !== null) {
           this.mensagemAlerta = `Tipo da frase ${this.tipoFrase.nome} cadastrada com sucesso!`;
           this.tipoAlerta = "success";
+          this.tipoFrase.id = null;
+          this.tipoFrase.nome = "";
         } else {
           this.mensagemAlerta = `Erro ao cadastrar o tipo da frase ${this.tipoFrase.nome}!`;
           this.tipoAlerta = "danger";

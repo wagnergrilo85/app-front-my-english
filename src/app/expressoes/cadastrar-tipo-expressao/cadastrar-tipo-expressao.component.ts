@@ -29,13 +29,12 @@ export class CadastrarTipoExpressaoComponent implements OnInit {
     }
 
     this.tipoExpressaoService.cadastrarTipo(this.tipoExpressao).subscribe(tipoCadastrado => {
-      console.log("---------RESPOSTA-----------");
-      console.log(tipoCadastrado);
-
         if (tipoCadastrado !== null) {
           this.mensagemAlerta = `Tipo da Palavra ${this.tipoExpressao.nome} cadastrada com sucesso!`;
           this.tipoAlerta = "success";
           this.tipoExpressao = new TipoExpressaoModel();
+          this.tipoExpressao.id = null;
+          this.tipoExpressao.nome = "";
         } else {
           this.mensagemAlerta = `Erro ao cadastrar o tipo da palavra ${this.tipoExpressao.nome}!`;
           this.tipoAlerta = "danger";
