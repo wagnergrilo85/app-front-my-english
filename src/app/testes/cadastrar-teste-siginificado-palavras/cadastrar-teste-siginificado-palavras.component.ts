@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaPalavrasModel } from 'src/app/model/categoria-palavras.model';
+import { QuestionarioTestePalavrasModel } from 'src/app/model/questionario-teste-palavras.model';
 import { TesteSignificadoPalavraModel } from 'src/app/model/teste-significado-palavra.model';
 import { TipoPalavraModel } from 'src/app/model/tipo-palavra.model';
 import { CategoriaPalavraService } from 'src/app/services/categoria-palavra.service';
@@ -15,6 +16,7 @@ import { TipoPalavraService } from 'src/app/services/tipo-palavra.service';
 export class CadastrarTesteSiginificadoPalavrasComponent implements OnInit {
 
   public testeSignificadoPalavraModel: TesteSignificadoPalavraModel = new TesteSignificadoPalavraModel();
+  public arrayQuestionarioTestePalavrasModel: Array<QuestionarioTestePalavrasModel>;
   public mensagemAlerta: string = "";
   public tipoAlerta: string = "success";
   public tipoPalavras: Array<TipoPalavraModel> = [];
@@ -31,7 +33,6 @@ export class CadastrarTesteSiginificadoPalavrasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.testeSignificadoPalavraModel.categoriaPalavra = [];
     this.getListaTipo();
     this.getListaCategoriasPalavras();
   }
@@ -48,7 +49,14 @@ export class CadastrarTesteSiginificadoPalavrasComponent implements OnInit {
     })
   }
 
-  
+  getListaPerguntasDoTeste(idTeste: number){
+    this.testesService.obterQuestionarioPerguntasPalavrasPorIdTeste(idTeste).subscribe( lista =>{
+      this.arrayQuestionarioTestePalavrasModel = lista;
+      console.log(this.arrayQuestionarioTestePalavrasModel);
+    });
+  }
+
+
   cadastrar() {
 
     this.mensagemAlerta = "";
@@ -70,6 +78,7 @@ export class CadastrarTesteSiginificadoPalavrasComponent implements OnInit {
           this.mensagemAlerta = `Teste ${this.testeSignificadoPalavraModel.nomeTeste} cadastrado com sucesso!`;
           this.tipoAlerta = "success";
           this.resetDados();
+          this.getListaPerguntasDoTeste(testeCadastrado.id);
         } else {
           this.mensagemAlerta = `Erro ao cadastrar teste ${this.testeSignificadoPalavraModel.nomeTeste}!`;
           this.tipoAlerta = "danger";
@@ -86,20 +95,7 @@ export class CadastrarTesteSiginificadoPalavrasComponent implements OnInit {
 
   public resetDados(){
     this.testeSignificadoPalavraModel = new TesteSignificadoPalavraModel();
-    this.testeSignificadoPalavraModel.categoriaPalavra = [];
   }
 
-  public adicionarCategoria(){
-    if(this.categoriaPalavraSelecionada != null){
-      this.testeSignificadoPalavraModel.categoriaPalavra.push(this.categoriaPalavraSelecionada);
-      this.categoriaPalavraSelecionada = null;
-    }
-  }
-
-  public removerCategoria(categoria: CategoriaPalavrasModel){
-    if(categoria != null){
-      this.testeSignificadoPalavraModel.categoriaPalavra =  this.testeSignificadoPalavraModel.categoriaPalavra.filter(cat => cat != categoria);
-    }
-  }
 
 }

@@ -1,1 +1,86 @@
-<p>realizar-teste-siginificado-palavras works!</p>
+<div class="container-fluid my-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>Responder questionário - {{testeSignificadoPalavraModel.nomeTeste}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container card-header-top">
+  <div class="row">
+    <div class="col-lg-12">
+      <a class="btn btn-success  btn-xs top-header-my" routerLink="/teste-significado-palavras/cadastrar"><i
+          class="fas fa-plus"></i> Novo teste</a>
+      <a class="btn btn-danger  btn-xs top-header-my float-right" routerLink="/teste-significado-palavras/listar"><i
+          class="fas fa-undo"></i> Voltar</a>
+      <a *ngIf="testeSignificadoPalavraModel.status !== 2" class="btn btn-info  btn-xs top-header-my float-right" style="margin-right: 10px;" (click)="salvarRespostas()">
+        <i class="far fa-save"></i> Salvar </a>
+    </div>
+  </div>
+</div>
+
+<div class="container body-new">
+  <div class="row">
+    <div class="col-lg-12">
+      <br>
+      <div class="alert alert-{{tipoAlerta}}" role="alert" [hidden]="!mensagemAlerta"> {{mensagemAlerta}} </div>
+
+      <p class="detalhes-teste">
+        <strong>Teste:</strong> {{testeSignificadoPalavraModel.nomeTeste}} <br>
+        <strong>Data abertura:</strong> {{testeSignificadoPalavraModel.dataAbertura | date: "dd/MM/yyyy" }} <br>
+        <strong>Data finalização:</strong> {{testeSignificadoPalavraModel.dataFinalizacao | date: "dd/MM/yyyy" }} <br>
+        <strong>Total de erros:</strong> {{testeSignificadoPalavraModel.totalErros }} <br>
+        <strong>Total de acertos:</strong> {{testeSignificadoPalavraModel.totaoAcertos }} <br>
+        <strong>Direção:</strong> {{testeSignificadoPalavraModel.direcao }} <br>
+      </p>
+
+      <div class="form-row" *ngFor="let resposta of arrayQuestionarioTestePalavrasModel; let i = index">
+
+        <div class="card-questao  col-lg-8">
+          <div class="form-groupgg col-lg-5 col-sm-4 col-xs-12 col-md-4" style="float: left;">
+            <label for="palavraSerTraduzida">Palavra a ser traduzida</label>
+            <input type="text" class="form-control" id="palavraSerTraduzida" placeholder="Palavra ser traduzida"
+              name="palavraSerTraduzida" readonly [value]="resposta.palavraASerTraduzida">
+          </div>
+
+          <div *ngIf="testeSignificadoPalavraModel.status !== 2">
+            <div class="form-groupgg col-lg-5 col-sm-4 col-xs-12 col-md-4" style="float: left;">
+              <label for="respostaPalavra">Resposta: </label>
+              <input type="text" class="form-control" placeholder="Informe a resposta..." name="respostaPalavra"
+                [(ngModel)]="resposta.palavraDigitada">
+            </div>
+          </div>
+
+          <div *ngIf="testeSignificadoPalavraModel.status === 2">
+            <div class="form-groupgg col-lg-5 col-sm-4 col-xs-12 col-md-4" style="float: left;">
+              <br>
+              <table class="table table-bordered" *ngIf="resposta.palavraDigitada.length > 0">
+                <tr>
+                  <td colspan="2" class="text-center"> <strong>Respondida</strong></td>
+                </tr>
+                <tr>
+                  <td> Palavra digotada: </td>
+                  <td> {{resposta.palavraDigitada}} </td>
+                </tr>
+                <tr>
+                  <td> Resposta correta: </td>
+                  <td> {{resposta.palavraCorreta}} </td>
+                </tr>
+                <tr>
+                  <td> Acertou? </td>
+                  <td>  <span class="badge" [ngClass]="resposta.acerto === 1 ? 'badge-success' : 'badge-danger'"> {{resposta.acerto === 1 ? "Sim" : 'Não'}} </span> </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>

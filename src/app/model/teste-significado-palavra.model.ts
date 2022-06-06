@@ -4,7 +4,7 @@ import { TipoPalavraModel } from "./tipo-palavra.model";
 export class TesteSignificadoPalavraModel{
 
   id: number;
-  categoriaPalavra?: Array<CategoriaPalavrasModel>;
+  categoriaPalavra?: CategoriaPalavrasModel;
   dataAbertura?: Date;
   dataFinalizacao?: Date;
   direcao?: string;
@@ -14,5 +14,5 @@ export class TesteSignificadoPalavraModel{
   tipoPalavra?: TipoPalavraModel;
   totalErros?: number;
   totaoAcertos?: number;
-  
+
 }

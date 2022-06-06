@@ -1,12 +1,13 @@
-<app-header-top [texto]="'Lista de palavras'"></app-header-top>
+<app-header-top [texto]="'Lista de testes'"></app-header-top>
 
-  <card-top-listar
-   [labelNovaEntidade] = "'Novo teste'"
-   [rotaNovaEntidade] = "'/teste-significado-palavras/cadastrar'"
-   [rotaListaCategorias]="'/palavras/categorias/listar'"
-   [rotaListaTipos]="'/palavras/tipos/listar'"
-   [rotaFiltrar]=""
-   [rotaImprimir]=""></card-top-listar>
+
+<div class="container card-header-top">
+  <div class="row">
+    <div class="col-lg-3">
+      <a class="btn btn-success btn-xs top-header-my float-left" ><i  class="fas fa-plus"></i> Novo teste</a>
+    </div>
+  </div>
+</div>
 
 <div class="container body-new">
   <div class="row">
@@ -17,7 +18,10 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Teste</th>
+            <th scope="col">Direção</th>
             <th scope="col">QTD</th>
+            <th scope="col">Total de acertos</th>
+            <th scope="col">Total de erros</th>
             <th scope="col">Data de cadastro</th>
             <th scope="col">Status</th>
             <th scope="col">Ações</th>
@@ -27,23 +31,23 @@
           <tr *ngFor="let teste of listaTeste">
             <th>{{ teste.id }}</th>
             <td>{{ teste.nomeTeste }}</td>
+            <td>{{ teste.direcao }}</td>
             <td>{{ teste.qtdPalavras }}</td>
+            <td>{{ teste.totalErros }}</td>
+            <td>{{ teste.totaoAcertos }}</td>
             <td>{{ teste.dataAbertura | date: "dd/MM/yyyy" }}</td>
             <td>{{ teste.status == 1 ? "Ativado" : "Desativado" }}</td>
             <td class="text-center">
               <div class="btn-group">
                 <a href="#" class="btn btn-xs btn-inside-table-list" data-toggle="tooltip" data-placement="top"
-                  title="Tipos da categoria" [routerLink]="['/palavras/excluir/', teste.id]"><i
+                  title="Tipos da categoria" [routerLink]="['/teste-significado-palavras/realizar/', teste.id]"><i
                     class="fas fa-dice-d6"></i></a>
-                <a href="#" class="btn btn-xs btn-inside-table-list" data-toggle="tooltip" data-placement="top"
+                <!-- <a href="#" class="btn btn-xs btn-inside-table-list" data-toggle="tooltip" data-placement="top"
                   title="Categorias da categoria" [routerLink]="['/palavras/excluir/', teste.id]"><i
                     class="fas fa-list"></i></a>
                 <a href="#" class="btn btn-xs btn-inside-table-list" data-toggle="tooltip" data-placement="top"
                   title="Editar palavra" [routerLink]="['/palavras/editar/', teste.id]"><i
-                    class="far fa-edit"></i></a>
-                <a href="#" class="btn btn-xs btn-inside-table-list" data-toggle="tooltip" data-placement="top"
-                  title="Excluir palavra" [routerLink]="['/palavras/excluir/', teste.id]"><i
-                    class="fas fa-trash"></i></a>
+                    class="far fa-edit"></i></a> -->
               </div>
             </td>
           </tr>

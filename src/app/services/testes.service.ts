@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API } from '../api/api';
+import { QuestionarioTestePalavrasModel } from '../model/questionario-teste-palavras.model';
 import { TesteSignificadoPalavraModel } from '../model/teste-significado-palavra.model';
 
 @Injectable({
@@ -30,6 +31,14 @@ export class TestesService {
     return this.http.put(`/api/teste-significado-palavras/editar`, teste);
   }
 
+  obterQuestionarioPerguntasPalavrasPorIdTeste(idTeste: number) : Observable <any> {
+    return this.http.get(`/api/teste-significado-palavras/questionario/perguntas/${idTeste}`);
+  }
 
-  
+  salvarQuestionarioPerguntasPalavrasPorIdTeste(arrayQuestionarioTestePalavrasModel: Array<QuestionarioTestePalavrasModel>) : Observable <any> {
+    console.log(arrayQuestionarioTestePalavrasModel);
+    return this.http.post(`/api/teste-significado-palavras/responder/perguntas/`, arrayQuestionarioTestePalavrasModel);
+  }
+
+
 }

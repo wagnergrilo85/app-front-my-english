@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'teste-significado-palavras/listar', component: ListarTesteSiginificadoPalavrasComponent},
   {path: 'teste-significado-palavras/cadastrar', component: CadastrarTesteSiginificadoPalavrasComponent},
   {path: 'teste-significado-palavras/editar/:id', component: EditarTesteSiginificadoPalavrasComponent},
-  {path: 'teste-significado-palavras/realizar', component: RealizarTesteSiginificadoPalavrasComponent},
+  {path: 'teste-significado-palavras/realizar/:id', component: RealizarTesteSiginificadoPalavrasComponent},
 
 ];
 
