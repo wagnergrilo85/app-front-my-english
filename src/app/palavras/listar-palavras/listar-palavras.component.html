@@ -5,8 +5,41 @@
    [rotaNovaEntidade] = "'/palavras/cadastrar'"
    [rotaListaCategorias]="'/palavras/categorias/listar'"
    [rotaListaTipos]="'/palavras/tipos/listar'"
-   [rotaFiltrar]=""
-   [rotaImprimir]=""></card-top-listar>
+   [rotaImprimir]=""
+   (mostrarCardPesquisa)="mostrarCardPesquisa($event)"
+   ></card-top-listar>
+
+  <div *ngIf="showCardPesquisa" class="container card-pesquisa">
+    <div class="row">
+      <div class="col-lg-5 col-sm-4 col-xs-12 col-md-4">
+        <label for="direcao">Direção:</label>
+        <select id="direcao" class="form-control" name="direcao" [(ngModel)]="objPesquisa.direcao">
+          <option value="NA">Nenhum</option>
+          <option value="portugues">Português</option>
+          <option value="ingles">Inglês</option>
+        </select>
+
+        <label for="tipoPalavra">Tipo da palavra:</label>
+        <select id="tipoPalavra" class="form-control" name="tipoPalavra" [(ngModel)]="objPesquisa.tipoPalavra" >
+          <option *ngFor = "let tipo of tipoPalavras" [ngValue]="tipo"> {{tipo.nome}}</option>
+        </select>
+      </div>
+
+      <div class="col-lg-5 col-sm-4 col-xs-12 col-md-4">
+        <label for="tag">TAG:</label>
+        <input type="text" class="form-control" [(ngModel)]="objPesquisa.tag" id="tag" placeholder="Pesquisar tag..." name="tag">
+
+        <label for="pesquisar">Pesquisar:</label>
+        <input type="text" class="form-control" [(ngModel)]="objPesquisa.pesquisar" id="pesquisar" placeholder="Pesquisar palavra..." name="pesquisar">
+      </div>
+
+      <div class="col-lg-2 col-sm-4 col-xs-12 col-md-4">
+        <button class="btn btn-danger btn-lg btn-block" (click)="ocultarPesquisar()" style="margin-top: 30px"> Ocultar </button>
+        <button class="btn btn-success btn-lg btn-block" (click)="pesquisar()" style="margin-top: 10px"> Pesquisar</button>
+      </div>
+
+    </div>
+  </div>
 
 <div class="container body-new">
   <div class="row">
@@ -20,8 +53,10 @@
             <th scope="col">Palavra inglês</th>
             <th scope="col">Palavra português</th>
             <th scope="col">Data de cadastro</th>
+            <th scope="col">Verbo</th>
+            <th scope="col">Tag</th>
             <th scope="col">Tipo</th>
-            <th scope="col">Ações</th>
+            <th scope="col" class="text-center">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +66,8 @@
             <td>{{ palavra.palavraEg }}</td>
             <td>{{ palavra.palavraPt }}</td>
             <td>{{ palavra.dataCadastro | date: "dd/MM/yyyy" }}</td>
+            <td>{{ palavra.verbo === "NAO_E_VERBO" ? "Não é verbo" : palavra.verbo === "VERBO_REGULAR" ? 'Verbo regular' : 'Verbo irregular' }}</td>
+            <td>{{ palavra.tag }}</td>
             <td>{{ palavra.tipoPalavra.nome }}</td>
             <td class="text-center">
               <div class="btn-group">

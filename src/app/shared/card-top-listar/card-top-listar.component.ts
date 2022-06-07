@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,8 +14,9 @@ export class CardTopListarComponent implements OnInit {
   @Input() rotaNovaEntidade: string = "";
   @Input() rotaListaCategorias: string = "";
   @Input() rotaListaTipos: string = "";
-  @Input() rotaFiltrar: string = "";
+  @Input() rotaFiltrar: boolean;
   @Input() rotaImprimir: string = "";
+  @Output() mostrarCardPesquisa = new EventEmitter();
 
   ngOnInit() {
   }
@@ -36,7 +37,7 @@ export class CardTopListarComponent implements OnInit {
     this._router.navigateByUrl(this.rotaImprimir);
   }
 
-  fnRotaFiltrar(){
-    this._router.navigateByUrl(this.rotaFiltrar);
+  mostrarPesquisa(){
+    this.mostrarCardPesquisa.emit(true);
   }
 }
