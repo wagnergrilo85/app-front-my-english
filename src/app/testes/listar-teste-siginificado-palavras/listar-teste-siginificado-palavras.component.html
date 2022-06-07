@@ -19,9 +19,12 @@
             <th scope="col">ID</th>
             <th scope="col">Teste</th>
             <th scope="col">Direção</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Tipo</th>
             <th scope="col">QTD</th>
             <th scope="col">Total de acertos</th>
             <th scope="col">Total de erros</th>
+            <th scope="col">% acerto</th>
             <th scope="col">Data de cadastro</th>
             <th scope="col">Status</th>
             <th scope="col">Ações</th>
@@ -32,15 +35,20 @@
             <th>{{ teste.id }}</th>
             <td>{{ teste.nomeTeste }}</td>
             <td>{{ teste.direcao }}</td>
+            <td>{{ teste.categoriaPalavra.nome }}</td>
+            <td>{{ teste.tipoPalavra.nome}}</td>
             <td>{{ teste.qtdPalavras }}</td>
-            <td>{{ teste.totalErros }}</td>
             <td>{{ teste.totaoAcertos }}</td>
+            <td>{{ teste.totalErros }}</td>
+            <td>
+              <span class="badge " [ngClass]="((teste.totaoAcertos / teste.qtdPalavras) * 100) >= 75 ? 'badge-success' : 'badge-danger'"> {{ (teste.totaoAcertos / teste.qtdPalavras) * 100 | number : '1.1-2'}}% </span>
+            </td>
             <td>{{ teste.dataAbertura | date: "dd/MM/yyyy" }}</td>
             <td>{{ teste.status == 1 ? "Ativado" : "Desativado" }}</td>
             <td class="text-center">
               <div class="btn-group">
                 <a href="#" class="btn btn-xs btn-inside-table-list" data-toggle="tooltip" data-placement="top"
-                  title="Tipos da categoria" [routerLink]="['/teste-significado-palavras/realizar/', teste.id]"><i
+                  title="Realizar teste" [routerLink]="['/teste-significado-palavras/realizar/', teste.id]"><i
                     class="fas fa-dice-d6"></i></a>
                 <!-- <a href="#" class="btn btn-xs btn-inside-table-list" data-toggle="tooltip" data-placement="top"
                   title="Categorias da categoria" [routerLink]="['/palavras/excluir/', teste.id]"><i

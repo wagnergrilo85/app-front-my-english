@@ -15,21 +15,23 @@
       <table class="table table-bordered table-striped tabela">
         <thead>
           <tr>
+            <th scope="col">QTD</th>
             <th scope="col">ID</th>
             <th scope="col">Palavra inglês</th>
             <th scope="col">Palavra português</th>
             <th scope="col">Data de cadastro</th>
-            <th scope="col">Status</th>
+            <th scope="col">Tipo</th>
             <th scope="col">Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let palavra of palavras">
+          <tr *ngFor="let palavra of palavras; let i = index;">
+            <th>{{ i }}</th>
             <th>{{ palavra.id }}</th>
             <td>{{ palavra.palavraEg }}</td>
             <td>{{ palavra.palavraPt }}</td>
             <td>{{ palavra.dataCadastro | date: "dd/MM/yyyy" }}</td>
-            <td>{{ palavra.status == 1 ? "Ativado" : "Desativado" }}</td>
+            <td>{{ palavra.tipoPalavra.nome }}</td>
             <td class="text-center">
               <div class="btn-group">
                 <a href="#" class="btn btn-xs btn-inside-table-list" data-toggle="tooltip" data-placement="top"

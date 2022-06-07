@@ -57,6 +57,7 @@ export class RealizarTesteSiginificadoPalavrasComponent implements OnInit {
     this._testesService.salvarQuestionarioPerguntasPalavrasPorIdTeste( this.arrayQuestionarioTestePalavrasModel).subscribe(resposta =>{
       console.log(resposta);
       this.getTestePalavra();
+      this.getPerguntasTestePalavra();
     });
   }
 
